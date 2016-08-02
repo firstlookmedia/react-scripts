@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "bin": {
+    "react-scripts": "./bin/react-scripts.js"
+  },
   "dependencies": {
     "autoprefixer": "^6.3.7",
     "babel": "^6.5.2",
