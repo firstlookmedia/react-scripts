@@ -51,18 +51,20 @@ const serverCompiler = webpack(Object.assign({}, serverConfig));
 const serverPath = path.resolve('build/server.js');
 
 var child;
-function restartServer() {
-  child && child.kill();
+
+function startServer() {
   child = spawn('node', [serverPath], { stdio: 'inherit' });
 }
-try {
-  fs.statSync(serverPath);
-  console.log('Starting old server...');
-  restartServer();
-} catch (err) {
-  console.error('Failed to start old server:');
-  console.error(err.message || err);
-  console.log();
+
+function restartServer() {
+  if (child) {
+    child.on('close', (code, signal) => {
+      startServer();
+    });
+    child.kill();
+  } else {
+    startServer();
+  }
 }
 
 console.log('Compiling server build... this will take a while...');
