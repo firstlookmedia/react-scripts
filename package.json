@@ -41,6 +41,9 @@
     "webpack-manifest-plugin": "^1.0.1"
   },
   "peerDependencies": {
-    "source-map-support": "^0.4.2"
+    "babel-runtime": "^6.11.6",
+    "source-map-support": "^0.4.2",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
   }
 }

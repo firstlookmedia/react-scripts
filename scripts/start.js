@@ -66,7 +66,14 @@ try {
 }
 
 console.log('Compiling server build... this will take a while...');
-serverCompiler.watch({}, (err, stats) => {
-  console.log('Starting new server...');
-  restartServer();
+serverCompiler.watch({ poll: 1000 }, (err, stats) => {
+  if (err) {
+    console.error(err.message || err);
+  }
+  if (stats.hasErrors()) {
+    console.log(stats.toString("errors-only"));
+  } else {
+    console.log('Starting new server...');
+    restartServer();
+  }
 });
