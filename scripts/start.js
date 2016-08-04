@@ -35,6 +35,8 @@ app.all('*', (req, res) => {
     proxy.web(req, res, {target: `http://localhost:${APP_PORT}`}, (err) => {
       res.send("App server is down, but it may just be restarting");
     });
+  } else {
+    res.sendStatus(404);
   }
 });
 
