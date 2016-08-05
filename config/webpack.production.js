@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const defaults = require('./webpack.defaults');
 
@@ -18,9 +19,9 @@ const config = Object.assign({}, defaults, {
             { allChunks: true }
           ),
         });
-      };
+      }
       return loader;
-    })
+    }),
   }),
   plugins: defaults.plugins.concat([
     new ManifestPlugin({ fileName: 'manifest.json' }),
@@ -36,6 +37,7 @@ const config = Object.assign({}, defaults, {
       },
       mangle: true,
     }),
+    new ProgressBarPlugin(),
   ]),
 });
 

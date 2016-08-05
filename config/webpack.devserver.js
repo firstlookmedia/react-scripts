@@ -14,10 +14,10 @@ const config = Object.assign({}, defaults, {
     }),
   }),
   entry: [
-    require.resolve('webpack-hot-middleware/client')
+    require.resolve('webpack-hot-middleware/client'),
   ].concat(defaults.entry),
   plugins: defaults.plugins.concat([
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ]),
 });
 

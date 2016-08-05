@@ -2,6 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+
 const defaults = require('./webpack.defaults.js');
 
 const config = Object.assign({}, defaults, {
@@ -22,10 +25,7 @@ const config = Object.assign({}, defaults, {
     publicPath: defaults.output.publicPath,
   },
   // put all node_modules into externals (node will just require() them usual)
-  externals: fs
-    .readdirSync('node_modules')
-    .filter(p => p !== '.bin')
-    .reduce((obj, p) => { obj[p] = `commonjs ${p}`; return obj; }, {}),
+  externals: [nodeExternals()],
   module: Object.assign({}, defaults.module, {
     loaders: defaults.module.loaders.map(loader => {
       if (loader.name === 'css') {
@@ -48,7 +48,9 @@ const config = Object.assign({}, defaults, {
     new webpack.BannerPlugin(
       'require("source-map-support").install();',
       { raw: true, entryOnly: false }
-    )
+    ),
+
+    new ProgressBarPlugin(),
   ]),
   devtool: 'source-map',
 });
