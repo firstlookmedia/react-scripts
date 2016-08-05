@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const gzipSize = require('gzip-size').sync;
 const chalk = require('chalk');
-const clientConfig = require('../config/webpack.production');
+const clientConfig = require('../config/webpack.client.prod');
 const serverConfig = require('../config/webpack.server');
 
 function printFileSizes(stats, config) {

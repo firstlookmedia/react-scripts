@@ -19,6 +19,7 @@ const config = Object.assign({}, defaults, {
   plugins: defaults.plugins.concat([
     new webpack.HotModuleReplacementPlugin(),
   ]),
+  debug: true,
 });
 
 module.exports = config;
