@@ -1,13 +1,13 @@
 {
   "name": "react-scripts",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "shared react site configs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
   },
