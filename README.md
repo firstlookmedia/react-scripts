@@ -10,7 +10,7 @@ Create a new npm project and install:
 
 ## Usage
 
-This expects the following files:
+`react-scripts` expects at least the following files:
 
 ```
 src/index.js  # entry to the client-side app
@@ -28,7 +28,7 @@ build/assets/2d0823jd.css   # any other compiled assets (css, images, fonts)
 
 ---
 
-`react-scripts` provides the npm script `react-scripts`. Put this in your app's `"scripts"` section:
+`react-scripts` provides the npm script `react-scripts`. Add these in your app's `"scripts"` section:
 
 #### `react-scripts start`
 
@@ -42,4 +42,31 @@ Starts the development environment:
 
 Builds the production assets to the `build` folder.
 
+#### `react-scripts test`
 
+Runs mocha tests. `react-scripts` will look for any file named `__spec.js`.
+
+`react-scripts` adds chai assertion helpers for
+[enzyme](https://github.com/producthunt/chai-enzyme)
+and [sinon](https://github.com/domenic/sinon-chai)
+
+Example test:
+
+``` javascript
+import React from 'react';
+import { mount } from 'enzyme';
+import { expect } from 'chai';
+
+import Wrapper from '.';
+
+describe('Wrapper', () => {
+  it('renders supplied children', () => {
+    const wrapper = mount(
+      <Wrapper>
+        <div>child</div>
+      </Wrapper>
+    );
+    expect(wrapper).to.contain(<div>child</div>);
+  });
+});
+```
