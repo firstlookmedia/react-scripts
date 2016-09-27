@@ -59,6 +59,9 @@ let child;
 
 function startServer() {
   child = spawn('node', [serverPath], { stdio: 'inherit' });
+  child.on('exit', () => {
+    child = null;
+  });
 }
 
 function restartServer() {
