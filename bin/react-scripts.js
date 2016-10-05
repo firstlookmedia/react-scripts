@@ -9,6 +9,7 @@ switch (script) {
   case 'build':
   case 'start':
   case 'test':
+  case 'test:watch':
     const result = spawn.sync(
       'node',
       [require.resolve(path.join('../scripts', script))].concat(args),
