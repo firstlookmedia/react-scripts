@@ -22,7 +22,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       include: [path.resolve('src'), path.resolve('server.js')],
       query: {
         passPerPreset: true,
