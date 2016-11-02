@@ -7,7 +7,7 @@ const setup = path.resolve(__dirname, '../lib/testSetup.js');
 
 console.log('Running tests...');
 
-spawn(
+const child = spawn(
   'node',
   [
     mochaWebpack,
@@ -18,3 +18,5 @@ spawn(
   ],
   { stdio: 'inherit' }
 );
+
+child.on('close', code => process.exit(code));
