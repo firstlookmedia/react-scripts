@@ -12,6 +12,7 @@ const child = spawn(
   [
     mochaWebpack,
     '--colors',
+    '--exit',
     '--webpack-config', testConfig,
     '--require', setup,
     'src/**/__spec.js',
@@ -20,3 +21,5 @@ const child = spawn(
 );
 
 child.on('close', code => process.exit(code));
+child.on('exit', code => process.exit(code));
+child.on('disconnect', code => process.exit(1));

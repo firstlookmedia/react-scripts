@@ -24,6 +24,7 @@
     "babel-runtime": "^6.11.6",
     "chalk": "^1.1.3",
     "cheerio": "^0.20.0",
+    "concat-stream": "^1.5.2",
     "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
     "express": "^4.14.0",
@@ -54,13 +55,13 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.0",
     "enzyme": "^2.4.1",
-    "sinon-chai": "^2.8.0",
-    "source-map-support": "^0.4.2",
     "react": "^15.3.0",
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-relay": "^0.9.0",
-    "sinon": "^1.17.5"
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "source-map-support": "^0.4.2"
   },
   "devDependencies": {
     "babel-relay-plugin": "^0.9.3",

@@ -51,6 +51,7 @@ function handler(config, err, stats) {
   }
   if (stats.hasErrors()) {
     console.log(stats.toString('errors-only'));
+    process.exit(1);
   } else {
     printFileSizes(stats, config);
   }
