@@ -1,6 +1,6 @@
 {
   "name": "react-scripts",
-  "version": "0.11.3",
+  "version": "0.12.0",
   "description": "shared react site configs",
   "main": "index.js",
   "scripts": {
