@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
@@ -30,21 +29,17 @@ const config = Object.assign({}, defaults, {
     loaders: defaults.module.loaders.map(loader => {
       if (loader.name === 'css') {
         return Object.assign({}, loader, {
-          loader: ExtractTextPlugin.extract(
-            'style',
+          loader: undefined,
+          loaders: [
+            path.join(__dirname, '../lib/exportLocalsLoader.js'),
             loader.loader,
-            { allChunks: true }
-          ),
+          ],
         });
       }
       return loader;
     }),
   }),
   plugins: defaults.plugins.concat([
-    // this seems to be required to make the css modules output their classnames...
-    // webpack.production.js is really responsible for css output
-    new ExtractTextPlugin('unused.css'),
-
     new webpack.BannerPlugin(
       'require("source-map-support").install();',
       { raw: true, entryOnly: false }

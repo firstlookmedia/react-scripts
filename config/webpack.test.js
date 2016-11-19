@@ -21,4 +21,18 @@ module.exports = Object.assign({}, defaults, {
       'real-react-relay': path.resolve('node_modules/react-relay'),
     },
   }),
+  module: Object.assign({}, defaults.module, {
+    loaders: defaults.module.loaders.map(loader => {
+      if (loader.name === 'css') {
+        return Object.assign({}, loader, {
+          loader: undefined,
+          loaders: [
+            path.join(__dirname, '../lib/exportLocalsLoader.js'),
+            loader.loader,
+          ],
+        });
+      }
+      return loader;
+    }),
+  }),
 });
