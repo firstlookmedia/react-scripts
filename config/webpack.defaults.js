@@ -38,7 +38,7 @@ module.exports = {
     }, {
       name: 'css',
       test: /\.css$/,
-      loader: 'css?modules&importLoaders=1&localIdentName=[path]---[local]---[hash:base64:5]!postcss',
+      loader: 'css?modules&importLoaders=1&context=src/components&localIdentName=[path][local]!postcss',
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [
