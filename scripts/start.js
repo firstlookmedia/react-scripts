@@ -36,7 +36,23 @@ const proxy = httpProxy.createProxyServer();
 app.all('*', (req, res) => {
   if (!new RegExp(`^${config.output.publicPath}`).test(req.path)) {
     proxy.web(req, res, { target: `http://localhost:${APP_PORT}` }, () => {
-      res.send('App server is down, but it may just be restarting');
+      res.send(`<!doctype html>
+<html>
+<head>
+  <style>
+    body { background: black; color: white; font-family: Menlo, monospace; }
+  </style>
+  <script>
+    var i = 0;
+    setInterval(function(){
+      document.body.innerHTML = 'Building server' + Array(i).fill('.').join('');
+      i = (i + 1) % 4;
+    }, 200)
+    setTimeout("location.reload()", 300);
+  </script>
+</head>
+<body></body>
+</html>`);
     });
   } else {
     res.sendStatus(404);
