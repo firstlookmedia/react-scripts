@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 const spawn = require('cross-spawn');
 const chalk = require('chalk');
 
@@ -32,19 +32,23 @@ module.exports = (appPath, appName, verbose, originalDirectory) => {
   const templatePath = path.join(ownPath, 'template');
   fs.copySync(templatePath, appPath);
 
-  let args = ['react', 'react-dom'];
+  let args = ['add', 'react', 'react-dom'];
 
   // Install additional template dependencies, if present
   const templateDependenciesPath = path.join(appPath, '.template.dependencies.json');
   if (fs.existsSync(templateDependenciesPath)) {
     const templateDependencies = require(templateDependenciesPath).dependencies;
-    args = args.concat(Object.keys(templateDependencies).map(key => (
-      `${key}@${templateDependencies[key]}`
-    )));
+    args = args.concat(Object.keys(templateDependencies).map(key => {
+      const version = templateDependencies[key];
+      if (version.indexOf('git+') === 0) {
+        return version;
+      }
+      return `${key}@${version}`;
+    }));
     fs.unlinkSync(templateDependenciesPath);
   }
 
-  const command = 'yarnpkg';
+  const command = 'yarn';
   const proc = spawn(command, args, { stdio: 'inherit' });
   proc.on('close', (code) => {
     if (code !== 0) {

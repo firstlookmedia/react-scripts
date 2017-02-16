@@ -1,5 +1,4 @@
 import React from 'react';
-import Relay from 'react-relay';
 import config from 'env-config';
 
 import styles from './styles.css';

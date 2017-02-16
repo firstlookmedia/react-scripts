@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Relay from 'react-relay';
 import { match, Router, applyRouterMiddleware, browserHistory } from 'react-router';
 import { useScroll } from 'react-router-scroll';
-import useRelay from 'react-router-relay';
 import envConfig from 'env-config';
 import DataProvider from './components/DataProvider';
 

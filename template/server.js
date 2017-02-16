@@ -8,7 +8,6 @@ import compression from 'compression';
 import ReactDOMServer from 'react-dom/server';
 import Helmet from 'react-helmet';
 import envConfig from 'env-config';
-import Relay from 'react-relay';
 import manifest from 'react-scripts/lib/manifest';
 import etag from 'react-scripts/lib/etag';
 import assetMiddleware from 'react-scripts/lib/assetMiddleware';

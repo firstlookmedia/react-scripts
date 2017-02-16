@@ -1,7 +1,3 @@
-.sass-cache
-vendor
-bin
-_site
 .bundle
 **/.DS_Store
 tmp
