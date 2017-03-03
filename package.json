@@ -3,10 +3,7 @@
   "version": "0.12.0",
   "description": "shared react site configs",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "First Look Media",
   "license": "MIT",
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
