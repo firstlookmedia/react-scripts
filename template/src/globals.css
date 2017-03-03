@@ -1,7 +1,14 @@
+@import './shared.css';
+
 * {
   box-sizing: border-box;
 }
 
-html {
-  font-family: sans-serif;
+body {
+  font-family: system, -apple-system,
+  ".SFNSText-Regular", HelveticaNeue, LucidaGrande;
+}
+
+:--heading {
+  @extend %font-size-xl;
 }

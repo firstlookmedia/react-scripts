@@ -1,0 +1,14 @@
+@import '../../shared.css';
+
+.container {
+  @extend %border-radius-m;
+  @extend %box-shadow-m;
+  margin: 5em auto;
+  padding: 3em;
+  border: 1px solid var(--grey);
+  max-width: 50%;
+  text-align: center;
+  h1 {
+    color: var(--green);
+  }
+}
