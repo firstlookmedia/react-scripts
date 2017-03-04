@@ -4,9 +4,15 @@ This provides configuration for FLM's isomorphic React apps.
 
 ## Install
 
-Create a new npm project and install:
+tl;dr
 
-`npm install --save git+ssh://git@github.com:firstlookmedia/react-scripts.git#v0.2`
+``` bash
+npm install -g create-react-app
+
+create-react-app --scripts-version=git+ssh://git@github.com/firstlookmedia/react-scripts.git#init my-app
+cd my-app
+npm start
+```
 
 ## Usage
 
@@ -28,9 +34,7 @@ build/assets/2d0823jd.css   # any other compiled assets (css, images, fonts)
 
 ---
 
-`react-scripts` provides the npm script `react-scripts`. Add these in your app's `"scripts"` section:
-
-#### `react-scripts start`
+#### `npm start`
 
 Starts the development environment:
 
@@ -38,11 +42,11 @@ Starts the development environment:
 - A webpack dev server, which hot-reloads and proxies requests to the app server,
   on [http://localhost:3233](http://localhost:3233)
 
-#### `react-scripts build`
+#### `npm build`
 
 Builds the production assets to the `build` folder.
 
-#### `react-scripts test`
+#### `npm test`
 
 Runs mocha tests. `react-scripts` will look for any file named `__spec.js`.
 
