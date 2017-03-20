@@ -1,6 +1,7 @@
 const path = require('path');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
+const postcssCalc = require('postcss-calc');
 
 module.exports = {
   entry: [
@@ -59,5 +60,6 @@ module.exports = {
   postcss: () => [
     precss,
     autoprefixer,
+    postcssCalc,
   ],
 };
