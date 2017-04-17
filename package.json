@@ -1,6 +1,6 @@
 {
   "name": "react-scripts",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "description": "shared react site configs",
   "main": "index.js",
   "author": "First Look Media",
@@ -39,8 +39,6 @@
     "jsdom": "^9.4.1",
     "json-loader": "^0.5.4",
     "loader-utils": "^0.2.16",
-    "mocha": "^2.5.3",
-    "mocha-webpack": "^0.5.0",
     "postcss-calc": "^5.3.1",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
@@ -55,22 +53,16 @@
     "webpack-node-externals": "^1.3.3"
   },
   "peerDependencies": {
-    "babel-runtime": "^6.11.6",
-    "chai": "^3.5.0",
-    "chai-enzyme": "^0.5.0",
-    "enzyme": "^2.4.1",
-    "react": "^15.3.0",
-    "react-addons-test-utils": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-relay": "^0.9.0",
-    "sinon": "^1.17.5",
-    "sinon-chai": "^2.8.0",
-    "source-map-support": "^0.4.2"
+    "babel-runtime": ">=6.11.6",
+    "enzyme": ">=2.4.1",
+    "react": ">=15.3.0",
+    "react-addons-test-utils": ">=15.3.0",
+    "react-dom": ">=15.3.0",
+    "react-relay": ">=0.9.0",
+    "source-map-support": ">=0.4.2"
   },
   "devDependencies": {
-    "babel-relay-plugin": "^0.9.3",
-    "chai": "^3.5.0",
-    "chai-enzyme": "^0.5.2",
+    "babel-relay-plugin": ">=0.9.3",
     "core-js": "^2.4.1",
     "enzyme": "^2.5.1",
     "eslint": "^3.2.2",
@@ -79,8 +71,6 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0",
     "source-map-support": "^0.4.6"
   }
 }

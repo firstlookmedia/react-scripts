@@ -12,13 +12,7 @@ const path = require('path');
 
 argv.push(
   '--config',
-  JSON.stringify(
-    createJestConfig(
-      relativePath => path.resolve(__dirname, '..', relativePath),
-      path.resolve('src', '..'),
-      false
-    )
-  )
+  JSON.stringify(createJestConfig())
 );
 
 jest.run(argv);
