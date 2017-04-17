@@ -1,0 +1,55 @@
+:root {
+  --font-size-base: 14;
+  --green: #34a853;
+  --grey: #ccc;
+}
+
+@custom-media --medium only screen and (min-width: 580px);
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+@define-mixin font-size $size {
+  font-size: calc($(size)rem / var(--font-size-base));
+}
+
+%subpixel {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+%grayscale {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+%font-size-xs {
+  @mixin font-size 9;
+}
+
+%font-size-s {
+  @mixin font-size 11;
+}
+
+%font-size-m {
+  @mixin font-size 14;
+}
+
+%font-size-l {
+  @mixin font-size 18;
+}
+
+%font-size-xl {
+  @mixin font-size 24;
+}
+
+%border-radius-s {
+  border-radius: 2px;
+}
+
+%border-radius-m {
+  border-radius: 5px;
+}
+
+%box-shadow-m {
+  box-shadow: 1px 3px 5px color(black alpha(10%));
+}

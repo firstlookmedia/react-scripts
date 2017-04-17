@@ -1,0 +1,5 @@
+.bundle
+**/.DS_Store
+tmp
+node_modules
+build

@@ -3,10 +3,7 @@
   "version": "0.12.0",
   "description": "shared react site configs",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "First Look Media",
   "license": "MIT",
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
@@ -31,6 +28,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "filesize": "^3.3.0",
+    "fs-extra": "^2.0.0",
     "gzip-size": "^3.0.0",
     "http-proxy": "^1.14.0",
     "image-webpack-loader": "^2.0.0",
