@@ -6,6 +6,9 @@ module.exports = () => ({
     '\\.(css)$': require.resolve('identity-obj-proxy'),
     'react-relay': path.resolve(__dirname, '__mocks__/react-relay.js'),
   },
+  transform: {
+    '\\.js$': path.resolve(__dirname, 'babelTransform.js')
+  },
   collectCoverageFrom: ['src/**/*.js'],
   testRegex: 'src/.*__spec\\.js$',
 });
