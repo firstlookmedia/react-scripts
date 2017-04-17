@@ -8,8 +8,7 @@ const args = process.argv.slice(3);
 switch (script) {
   case 'build':
   case 'start':
-  case 'test':
-  case 'test:watch':
+  case 'test': {
     const result = spawn.sync(
       'node',
       [require.resolve(path.join('../scripts', script))].concat(args),
@@ -17,6 +16,7 @@ switch (script) {
     );
     process.exit(result.status);
     break;
+  }
   default:
     console.log(`Unknown script "${script}".`);
     break;
