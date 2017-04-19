@@ -9,7 +9,7 @@ tl;dr
 ``` bash
 npm install -g create-react-app
 
-create-react-app --scripts-version=git+ssh://git@github.com/firstlookmedia/react-scripts.git#init my-app
+create-react-app --scripts-version=git+ssh://git@github.com/firstlookmedia/react-scripts.git my-app
 cd my-app
 npm start
 ```
