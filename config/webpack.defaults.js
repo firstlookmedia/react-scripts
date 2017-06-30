@@ -39,7 +39,7 @@ module.exports = {
     }, {
       name: 'css',
       test: /\.css$/,
-      loader: 'css?modules&importLoaders=1&context=src/components&localIdentName=[path][local]!postcss',
+      loader: 'css?modules&importLoaders=1&context=src/components&localIdentName=[path][local]&-autoprefixer!postcss',
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [
