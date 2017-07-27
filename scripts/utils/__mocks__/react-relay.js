@@ -1,11 +1,5 @@
 const Relay = jest.genMockFromModule('react-relay');
 
-class Mutation extends Relay.Mutation {
-  _resolveProps(props) {
-    this.props = props;
-  }
-}
-
 class MockStore {
   reset() {
     this.successResponse = undefined;
@@ -41,7 +35,7 @@ class MockStore {
 
 module.exports = {
   QL: Relay.QL,
-  Mutation,
+  Mutation: Relay.Mutation,
   Route: Relay.Route,
   RootContainer: () => null,
   createContainer: (component) => component,
