@@ -62,7 +62,7 @@
     "source-map-support": ">=0.4.2"
   },
   "devDependencies": {
-    "babel-relay-plugin": ">=0.9.3",
+    "babel-relay-plugin": "0.10.0",
     "core-js": "^2.4.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.2.2",
