@@ -8,6 +8,7 @@ const args = process.argv.slice(3);
 switch (script) {
   case 'build':
   case 'start':
+  case 'upload':
   case 'test': {
     const result = spawn.sync(
       'node',
