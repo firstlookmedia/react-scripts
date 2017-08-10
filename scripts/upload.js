@@ -12,10 +12,11 @@ let project_name = require(path.join(process.cwd(), 'package.json')).name;
 let base_dir = './build/assets';
 console.log(process.cwd(), project_name);
 
-if (!env) {
-  env = "local";
-  console.log("FLM_ENV is empty, setting to 'local'.");
-}
+// We could turn on uploading for everyone with this.
+// if (!env) {
+//   env = "local";
+//   console.log("FLM_ENV is empty, setting to 'local'.");
+// }
 
 switch (env) {
   case "development":
@@ -35,6 +36,7 @@ switch (env) {
     break;
   default:
     console.error("FLM_ENV is empty. Exiting.");
+    process.exit(0)
     break;
 }
 
