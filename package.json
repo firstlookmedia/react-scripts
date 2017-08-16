@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^6.3.7",
+    "aws-sdk": "^2.94.0",
     "babel": "^6.5.2",
     "babel-core": "^6.11.4",
     "babel-jest": "^19.0.0",

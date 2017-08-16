@@ -25,6 +25,7 @@ const config = Object.assign({}, defaults, {
   }),
   plugins: defaults.plugins.concat([
     new ManifestPlugin({ fileName: 'manifest.json' }),
+    new ManifestPlugin({ fileName: `manifest.${Date.now()}.json` }),
     new ExtractTextPlugin('[contenthash].css'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
