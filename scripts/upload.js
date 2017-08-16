@@ -8,7 +8,7 @@ const fs = require('fs');
 let s3 = new AWS.S3({apiVersion: '2006-03-01'});
 let bucket = process.env.ASSETS_S3_BUCKET;
 let uploadParams = {Bucket: bucket, Key: '', Body: ''};
-let project_name = require(path.join(process.cwd(), 'package.json')).name;
+let projectName = require(path.join(process.cwd(), 'package.json')).name;
 let base_dir = './build/assets';
 
 if (!bucket) {
@@ -23,7 +23,7 @@ fs.readdir(base_dir, (err, files) => {
       console.log('File Error', err);
     });
     uploadParams.Body = fileStream;
-    uploadParams.Key = `${project_name}/${file}`;
+    uploadParams.Key = `${projectName}/${file}`;
     s3.upload(uploadParams, function (err, data) {
       if (err) {
         console.log("Error", err);
