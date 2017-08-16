@@ -6,38 +6,14 @@ const path = require('path');
 const fs = require('fs');
 
 let s3 = new AWS.S3({apiVersion: '2006-03-01'});
-let env = process.env.FLM_ENV
-let uploadParams = {Bucket: '', Key: '', Body: ''};
+let bucket = process.env.ASSETS_S3_BUCKET;
+let uploadParams = {Bucket: bucket, Key: '', Body: ''};
 let project_name = require(path.join(process.cwd(), 'package.json')).name;
 let base_dir = './build/assets';
-console.log(process.cwd(), project_name);
 
-// We could turn on uploading for everyone with this.
-// if (!env) {
-//   env = "local";
-//   console.log("FLM_ENV is empty, setting to 'local'.");
-// }
-
-switch (env) {
-  case "development":
-    uploadParams.Bucket = "assets.dev.flmcloud.net";
-    break;
-  case "staging":
-    uploadParams.Bucket = "assets.staging.flmcloud.net";
-    break;
-  case "local":
-    uploadParams.Bucket = "assets.test.flmcloud.net";
-    break;
-  case "test":
-    uploadParams.Bucket = "assets.test.flmcloud.net";
-    break;
-  case "production":
-    uploadParams.Bucket = "assets.prod.flmcloud.net";
-    break;
-  default:
-    console.error("FLM_ENV is empty. Exiting.");
-    process.exit(0)
-    break;
+if (!bucket) {
+  console.error("ASSETS_S3_BUCKET is empty. Exiting.");
+  process.exit(1)
 }
 
 fs.readdir(base_dir, (err, files) => {
