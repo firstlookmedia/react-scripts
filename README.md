@@ -48,6 +48,8 @@ Builds the production assets to the `build` folder.
 
 #### `npm test`
 
+You will need `watchman` to use `npm test` without `CI=true`. To install on OSX `brew bundle` in this directory.
+
 Runs mocha tests. `react-scripts` will look for any file named `__spec.js`.
 
 `react-scripts` adds chai assertion helpers for
