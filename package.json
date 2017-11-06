@@ -41,6 +41,7 @@
     "jsdom": "^9.4.1",
     "json-loader": "^0.5.4",
     "loader-utils": "^0.2.16",
+    "mime": "^2.0.3",
     "postcss-calc": "^5.3.1",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
@@ -58,9 +59,9 @@
     "babel-runtime": ">=6.11.6",
     "enzyme": ">=2.7.1",
     "react": ">=15.3.0",
-    "react-test-renderer": ">=15.3.0",
     "react-dom": ">=15.3.0",
     "react-relay": ">= 0.9.0",
+    "react-test-renderer": ">=15.3.0",
     "source-map-support": ">=0.4.2"
   },
   "devDependencies": {
