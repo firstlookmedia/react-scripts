@@ -9,7 +9,7 @@ let s3 = new AWS.S3({apiVersion: '2006-03-01'});
 let bucket = process.env.ASSETS_S3_BUCKET;
 let uploadParams = { Bucket: bucket, Key: '', Body: '', ACL: 'public-read' };
 let projectName = require(path.join(process.cwd(), 'package.json')).name;
-let base_dir = './build';
+let base_dir = './build/assets';
 
 if (!bucket) {
   console.error("ASSETS_S3_BUCKET is empty. Exiting.");
@@ -23,7 +23,7 @@ fs.readdir(base_dir, (err, files) => {
       console.log('File Error', err);
     });
     uploadParams.Body = fileStream;
-    uploadParams.Key = `${projectName}/${file}`;
+    uploadParams.Key = `${projectName}/assets/${file}`;
     s3.upload(uploadParams, function (err, data) {
       if (err) {
         console.log("Error", err);
