@@ -4,6 +4,7 @@ process.env.NODE_ENV = 'production';
 const AWS = require('aws-sdk');
 const path = require('path');
 const fs = require('fs');
+const mime = require('mime');
 
 let s3 = new AWS.S3({apiVersion: '2006-03-01'});
 let bucket = process.env.ASSETS_S3_BUCKET;
@@ -24,6 +25,11 @@ fs.readdir(base_dir, (err, files) => {
     });
     uploadParams.Body = fileStream;
     uploadParams.Key = `${projectName}/assets/${file}`;
+
+    let type = mime.getType(file);
+    if (type) {
+      uploadParams.ContentType = type;
+    }
     s3.upload(uploadParams, function (err, data) {
       if (err) {
         console.log("Error", err);
