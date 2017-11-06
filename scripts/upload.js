@@ -23,7 +23,7 @@ fs.readdir(base_dir, (err, files) => {
       console.log('File Error', err);
     });
     uploadParams.Body = fileStream;
-    uploadParams.Key = `${projectName}/${file}`;
+    uploadParams.Key = `${projectName}/assets/${file}`;
     s3.upload(uploadParams, function (err, data) {
       if (err) {
         console.log("Error", err);
