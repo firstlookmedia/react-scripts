@@ -75,7 +75,8 @@ let child;
 
 function startServer() {
   child = spawn('node', [serverPath], { stdio: 'inherit' });
-  child.on('exit', () => {
+  child.on('close', code => {
+    console.log('EXIT', code);
     child = null;
   });
 }
@@ -105,23 +106,23 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
 
 // relay compiler
 
-console.log(path.resolve('node_modules/eyrie/lib/**'));
-
 const relayCompiler = spawn(
   path.resolve(__dirname, '../node_modules/.bin/relay-compiler'),
   [
     '--src',
     path.resolve('.'),
+
     '--include',
     'src/**',
-    // path.resolve('src/**'),
     'node_modules/eyrie/lib/**',
-    // path.resolve('node_modules/eyrie/lib/**'),
+
     '--exclude',
     '**/__generated__/**',
     'node_modules/eyrie/node_mobules/**',
+
     '--schema',
-    path.resolve('schema.graphql'),
+    'schema.graphql',
+
     '--watch',
   ],
   { stdio: 'inherit' }
