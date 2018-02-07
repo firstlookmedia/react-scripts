@@ -101,3 +101,30 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
     restartServer();
   }
 });
+
+
+// relay compiler
+
+console.log(path.resolve('node_modules/eyrie/lib/**'));
+
+const relayCompiler = spawn(
+  path.resolve(__dirname, '../node_modules/.bin/relay-compiler'),
+  [
+    '--src',
+    path.resolve('.'),
+    '--include',
+    'src/**',
+    // path.resolve('src/**'),
+    'node_modules/eyrie/lib/**',
+    // path.resolve('node_modules/eyrie/lib/**'),
+    '--exclude',
+    '**/__generated__/**',
+    'node_modules/eyrie/node_mobules/**',
+    '--schema',
+    path.resolve('schema.graphql'),
+    '--watch',
+  ],
+  { stdio: 'inherit' }
+);
+
+relayCompiler.on('close', code => process.exit(code));
