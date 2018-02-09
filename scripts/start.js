@@ -121,7 +121,7 @@ const relayCompiler = spawn(
     'node_modules/eyrie/node_mobules/**',
 
     '--schema',
-    'schema.graphql',
+    'schema.json',
 
     '--watch',
   ],
