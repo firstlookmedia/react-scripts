@@ -40,18 +40,34 @@ app.all('*', (req, res) => {
 <html>
 <head>
   <style>
-    body { background: black; color: white; font-family: Menlo, monospace; }
+    html, body { height: 100%; }
+    body {
+      background: #e9fff8;
+      color: #2b005a;
+      font-family: system, -apple-system,
+  ".SFNSText-Regular", HelveticaNeue, LucidaGrande;
+      font-size: 42px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
   </style>
   <script>
-    var i = 0;
-    setInterval(function(){
-      document.body.innerHTML = 'Building server' + Array(i).fill('.').join('');
-      i = (i + 1) % 4;
-    }, 200)
-    setTimeout("location.reload()", 300);
+    let i = 0;
+    function gradiate() {
+      document.body.style.backgroundColor = 'hsl('+ ((i * 2) % 360) + ',100%,96%)';
+      i++;
+      requestAnimationFrame(gradiate);
+    }
+    requestAnimationFrame(gradiate);
+
+    setTimeout("location.reload()", 3000);
   </script>
 </head>
-<body></body>
+<body>Building server...</body>
 </html>`);
     });
   } else {
