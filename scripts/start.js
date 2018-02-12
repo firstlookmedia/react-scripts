@@ -7,6 +7,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const express = require('express');
 const httpProxy = require('http-proxy');
+const chalk = require('chalk');
 const config = require('../config/webpack.client.dev');
 const serverConfig = require('../config/webpack.server.dev');
 
@@ -81,7 +82,10 @@ app.listen(PORT, (err) => {
   if (err) {
     return console.error(err);
   }
-  return console.log(`Dev server is listening on port ${PORT} and proxying to app server`);
+  const url = `http://localhost:${PORT}`;
+  return console.log(`
+Development server started. Visit ${chalk.bold.green(url)}
+`);
 });
 
 const serverCompiler = webpack(Object.assign({}, serverConfig));
@@ -106,7 +110,6 @@ function restartServer() {
   }
 }
 
-console.log('Compiling server build... this will take a while...');
 serverCompiler.watch({ poll: 1000 }, (err, stats) => {
   if (err) {
     console.error(err.message || err);
@@ -145,3 +148,4 @@ const relayCompiler = spawn(
 );
 
 relayCompiler.on('close', code => process.exit(code));
+process.on('close', code => relayCompiler.exit(code));
