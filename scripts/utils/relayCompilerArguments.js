@@ -19,11 +19,11 @@ module.exports = [
   path.resolve('.'),
 
   '--include',
-  includePaths.join(' '),
+  includePaths,
 
   '--exclude',
-  excludePaths.join(' '),
+  excludePaths,
 
   '--schema',
   'schema.json',
-];
+].reduce((acc, item) => acc.concat(item), []);
