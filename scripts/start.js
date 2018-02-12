@@ -10,7 +10,7 @@ const httpProxy = require('http-proxy');
 const chalk = require('chalk');
 const config = require('../config/webpack.client.dev');
 const serverConfig = require('../config/webpack.server.dev');
-const packageConfig = require(path.resolve('package.json'));
+const relayCompilerArguments = require('./utils/relayCompilerArguments');
 
 const app = express();
 
@@ -123,36 +123,9 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
   }
 });
 
-
-// relay compiler
-
-let includePaths = ['src/**'];
-let excludePaths = ['**/__generated__/**'];
-if ('react-scripts' in packageConfig) {
-  const moduleName = packageConfig['react-scripts'].sharedComponentModule;
-  if (moduleName) {
-    includePaths = includePaths.concat(`node_modules/${moduleName}/lib/**`);
-    excludePaths = excludePaths.concat(`node_modules/${moduleName}/node_modules/**`);
-  }
-}
-
 const relayCompiler = spawn(
   path.resolve('./node_modules/.bin/relay-compiler'),
-  [
-    '--src',
-    path.resolve('.'),
-
-    '--include',
-    includePaths.join(' '),
-
-    '--exclude',
-    excludePaths.join(' '),
-
-    '--schema',
-    'schema.json',
-
-    '--watch',
-  ],
+  relayCompilerArguments.concat('--watch'),
   { stdio: 'inherit' }
 );
 
