@@ -10,6 +10,7 @@ const httpProxy = require('http-proxy');
 const chalk = require('chalk');
 const config = require('../config/webpack.client.dev');
 const serverConfig = require('../config/webpack.server.dev');
+const packageConfig = require(path.resolve('package.json'));
 
 const app = express();
 
@@ -125,6 +126,16 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
 
 // relay compiler
 
+let includePaths = ['src/**'];
+let excludePaths = ['**/__generated__/**'];
+if ('react-scripts' in packageConfig) {
+  const moduleName = packageConfig['react-scripts'].sharedComponentModule;
+  if (moduleName) {
+    includePaths = includePaths.concat(`node_modules/${moduleName}/lib/**`);
+    excludePaths = excludePaths.concat(`node_modules/${moduleName}/node_modules/**`);
+  }
+}
+
 const relayCompiler = spawn(
   path.resolve('./node_modules/.bin/relay-compiler'),
   [
@@ -132,12 +143,10 @@ const relayCompiler = spawn(
     path.resolve('.'),
 
     '--include',
-    'src/**',
-    'node_modules/eyrie/lib/**',
+    includePaths.join(' '),
 
     '--exclude',
-    '**/__generated__/**',
-    'node_modules/eyrie/node_mobules/**',
+    excludePaths.join(' '),
 
     '--schema',
     'schema.json',
