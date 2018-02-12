@@ -126,7 +126,7 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
 // relay compiler
 
 const relayCompiler = spawn(
-  path.resolve(__dirname, '../node_modules/.bin/relay-compiler'),
+  path.resolve('./node_modules/.bin/relay-compiler'),
   [
     '--src',
     path.resolve('.'),
