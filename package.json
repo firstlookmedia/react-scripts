@@ -42,7 +42,6 @@
     "json-loader": "^0.5.4",
     "loader-utils": "^0.2.16",
     "mime": "^2.0.3",
-    "morgan": "^1.9.0",
     "postcss-calc": "^5.3.1",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
