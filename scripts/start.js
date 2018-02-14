@@ -96,8 +96,7 @@ let child;
 
 function startServer() {
   child = spawn('node', [serverPath], { stdio: 'inherit' });
-  child.on('close', code => {
-    console.log('EXIT', code);
+  child.on('close', () => {
     child = null;
   });
 }
