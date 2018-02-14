@@ -7,8 +7,10 @@ const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const express = require('express');
 const httpProxy = require('http-proxy');
+const chalk = require('chalk');
 const config = require('../config/webpack.client.dev');
 const serverConfig = require('../config/webpack.server.dev');
+const relayCompilerArguments = require('./utils/relayCompilerArguments');
 
 const app = express();
 
@@ -40,18 +42,34 @@ app.all('*', (req, res) => {
 <html>
 <head>
   <style>
-    body { background: black; color: white; font-family: Menlo, monospace; }
+    html, body { height: 100%; }
+    body {
+      background: #e9fff8;
+      color: #2b005a;
+      font-family: system, -apple-system,
+  ".SFNSText-Regular", HelveticaNeue, LucidaGrande;
+      font-size: 42px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
   </style>
   <script>
-    var i = 0;
-    setInterval(function(){
-      document.body.innerHTML = 'Building server' + Array(i).fill('.').join('');
-      i = (i + 1) % 4;
-    }, 200)
-    setTimeout("location.reload()", 300);
+    let i = 0;
+    function gradiate() {
+      document.body.style.backgroundColor = 'hsl('+ ((i * 2) % 360) + ',100%,96%)';
+      i++;
+      requestAnimationFrame(gradiate);
+    }
+    requestAnimationFrame(gradiate);
+
+    setTimeout("location.reload()", 3000);
   </script>
 </head>
-<body></body>
+<body>Building server...</body>
 </html>`);
     });
   } else {
@@ -65,7 +83,10 @@ app.listen(PORT, (err) => {
   if (err) {
     return console.error(err);
   }
-  return console.log(`Dev server is listening on port ${PORT} and proxying to app server`);
+  const url = `http://localhost:${PORT}`;
+  return console.log(`
+Development server started. Visit ${chalk.bold.green(url)}
+`);
 });
 
 const serverCompiler = webpack(Object.assign({}, serverConfig));
@@ -75,7 +96,7 @@ let child;
 
 function startServer() {
   child = spawn('node', [serverPath], { stdio: 'inherit' });
-  child.on('exit', () => {
+  child.on('close', () => {
     child = null;
   });
 }
@@ -89,7 +110,6 @@ function restartServer() {
   }
 }
 
-console.log('Compiling server build... this will take a while...');
 serverCompiler.watch({ poll: 1000 }, (err, stats) => {
   if (err) {
     console.error(err.message || err);
@@ -101,3 +121,12 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
     restartServer();
   }
 });
+
+const relayCompiler = spawn(
+  path.resolve('./node_modules/.bin/relay-compiler'),
+  relayCompilerArguments.concat('--watch'),
+  { stdio: 'inherit' }
+);
+
+relayCompiler.on('close', code => process.exit(code));
+process.on('close', code => relayCompiler.exit(code));

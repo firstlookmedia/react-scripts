@@ -62,10 +62,11 @@
     "react-dom": ">=15.3.0",
     "react-relay": ">= 0.9.0",
     "react-test-renderer": ">=15.3.0",
+    "relay-compiler": ">=1.4.1",
     "source-map-support": ">=0.4.2"
   },
   "devDependencies": {
-    "babel-relay-plugin": "0.10.0",
+    "babel-plugin-relay": "^1.4.1",
     "core-js": "^2.4.1",
     "enzyme": "^2.7.1",
     "eslint": "^3.2.2",

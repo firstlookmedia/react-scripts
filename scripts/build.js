@@ -7,8 +7,10 @@ const fs = require('fs');
 const path = require('path');
 const gzipSize = require('gzip-size').sync;
 const chalk = require('chalk');
+const spawn = require('cross-spawn');
 const clientConfig = require('../config/webpack.client.prod');
 const serverConfig = require('../config/webpack.server');
+const relayCompilerArguments = require('./utils/relayCompilerArguments');
 
 function printFileSizes(stats, config) {
   const outputPath = config.output.path;
@@ -56,12 +58,25 @@ function handler(config, err, stats) {
     printFileSizes(stats, config);
   }
 }
+console.log('Compiling relay queries...');
+const relayCompiler = spawn(
+  path.resolve('./node_modules/.bin/relay-compiler'),
+  relayCompilerArguments,
+  { stdio: 'inherit' }
+);
 
-console.log('Building optimized assets...');
-webpack(clientConfig).run((err, stats) => {
-  handler(clientConfig, err, stats);
+relayCompiler.on('close', (code) => {
+  if (code) {
+    process.exit(code);
+    return;
+  }
 
-  console.log();
-  console.log('Building server files...');
-  webpack(serverConfig).run(handler.bind(null, serverConfig));
+  console.log('Building optimized assets...');
+  webpack(clientConfig).run((err, stats) => {
+    handler(clientConfig, err, stats);
+
+    console.log();
+    console.log('Building server files...');
+    webpack(serverConfig).run(handler.bind(null, serverConfig));
+  });
 });
