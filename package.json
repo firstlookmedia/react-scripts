@@ -75,7 +75,7 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-relay": "1.1.0",
+    "react-relay": "1.4.0",
     "source-map-support": "^0.4.6"
   }
 }

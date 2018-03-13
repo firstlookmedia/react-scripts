@@ -2408,7 +2408,19 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.1, fbjs@^0.8.4:
+fbjs@^0.8.14:
+  version "0.8.16"
+  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
+  dependencies:
+    core-js "^1.0.0"
+    isomorphic-fetch "^2.1.1"
+    loose-envify "^1.0.0"
+    object-assign "^4.1.0"
+    promise "^7.1.1"
+    setimmediate "^1.0.5"
+    ua-parser-js "^0.7.9"
+
+fbjs@^0.8.4:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.5.tgz#f69ba8a876096cb1b9bffe4d7c1e71c19d39d008"
   dependencies:
@@ -5357,19 +5369,14 @@ react-dom@^15.3.2:
   version "15.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.3.2.tgz#c46b0aa5380d7b838e7a59c4a7beff2ed315531f"
 
-react-relay@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-1.1.0.tgz#56cd76885a886d93dd052efebbc0af5b6ceea998"
+react-relay@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-1.4.0.tgz#69ab51917bef59359e0f9b229069239f9023c21b"
   dependencies:
     babel-runtime "^6.23.0"
-    fbjs "^0.8.1"
+    fbjs "^0.8.14"
     prop-types "^15.5.8"
-    react-static-container "^1.0.1"
-    relay-runtime "1.1.0"
-
-react-static-container@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-static-container/-/react-static-container-1.0.1.tgz#694c0dd68a896b879519afb548399cc1989c9ab0"
+    relay-runtime "1.4.0"
 
 react@^15.3.2:
   version "15.3.2"
@@ -5535,12 +5542,17 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
-relay-runtime@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-1.1.0.tgz#2441a97c18e3c9035960cad48414a95844623b69"
+relay-debugger-react-native-runtime@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/relay-debugger-react-native-runtime/-/relay-debugger-react-native-runtime-0.0.10.tgz#0ef36012a1fba928962205514b46f635c652f235"
+
+relay-runtime@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-1.4.0.tgz#d91e4649324696060137b014aaaad08765018451"
   dependencies:
     babel-runtime "^6.23.0"
-    fbjs "^0.8.1"
+    fbjs "^0.8.14"
+    relay-debugger-react-native-runtime "0.0.10"
 
 repeat-element@^1.1.2:
   version "1.1.2"

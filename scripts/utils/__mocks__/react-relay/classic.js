@@ -1,4 +1,4 @@
-const Relay = jest.genMockFromModule('react-relay/classic');
+const Relay = require('react-relay/classic');
 
 class MockStore {
   reset() {
