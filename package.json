@@ -26,6 +26,8 @@
     "concat-stream": "^1.5.2",
     "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
+    "enzyme": "^3",
+    "enzyme-adapter-react-16": "^ 1",
     "enzyme-to-json": "^3.3",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -69,8 +71,6 @@
   "devDependencies": {
     "babel-plugin-relay": "^1.4.1",
     "core-js": "^2.4.1",
-    "enzyme": "^3",
-    "enzyme-adapter-react-16": "^ 1",
     "eslint": "^3.2.2",
     "eslint-config-airbnb-base": "^5.0.1",
     "eslint-plugin-import": "^1.12.0",
