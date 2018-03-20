@@ -1,4 +1,5 @@
 'use strict';
+
 process.env.NODE_ENV = 'production';
 
 const AWS = require('aws-sdk');
@@ -8,7 +9,14 @@ const mime = require('mime');
 
 let s3 = new AWS.S3({apiVersion: '2006-03-01'});
 let bucket = process.env.ASSETS_S3_BUCKET;
-let uploadParams = { Bucket: bucket, Key: '', Body: '', ACL: 'public-read' };
+let uploadParams = {
+  Bucket: bucket,
+  Key: '',
+  Body: '',
+  ACL: 'public-read',
+  // Sets Cache-Control header and in Metadata
+  CacheControl: 'public, max-age=31536000'
+};
 let projectName = require(path.join(process.cwd(), 'package.json')).name;
 let base_dir = './build/assets';
 
@@ -26,6 +34,7 @@ fs.readdir(base_dir, (err, files) => {
     uploadParams.Body = fileStream;
     uploadParams.Key = `${projectName}/assets/${file}`;
 
+    // Sets Content-Type header and in Metadata
     let type = mime.getType(file);
     if (type) {
       uploadParams.ContentType = type;
