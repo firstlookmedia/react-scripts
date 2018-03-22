@@ -2,3 +2,4 @@ node_modules
 template/yarn.lock
 template/package.json
 yarn-error.log
+.watchmanconfig
