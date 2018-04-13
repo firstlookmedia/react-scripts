@@ -11,7 +11,7 @@ npm install -g create-react-app
 
 create-react-app --scripts-version=git+ssh://git@github.com/firstlookmedia/react-scripts.git my-app
 cd my-app
-npm start
+yarn start
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ build/assets/2d0823jd.css   # any other compiled assets (css, images, fonts)
 
 ---
 
-#### `npm start`
+#### `yarn start`
 
 Starts the development environment:
 
@@ -42,37 +42,13 @@ Starts the development environment:
 - A webpack dev server, which hot-reloads and proxies requests to the app server,
   on [http://localhost:3233](http://localhost:3233)
 
-#### `npm build`
+#### `yarn build`
 
 Builds the production assets to the `build` folder.
 
-#### `npm test`
+#### `yarn test`
 
-You will need `watchman` to use `npm test` without `CI=true`. To install on OSX `brew bundle` in this directory.
+Runs jest tests. `react-scripts` will look for any file named `__spec.js`.
 
-Runs mocha tests. `react-scripts` will look for any file named `__spec.js`.
-
-`react-scripts` adds chai assertion helpers for
-[enzyme](https://github.com/producthunt/chai-enzyme)
-and [sinon](https://github.com/domenic/sinon-chai)
-
-Example test:
-
-``` javascript
-import React from 'react';
-import { mount } from 'enzyme';
-import { expect } from 'chai';
-
-import Wrapper from '.';
-
-describe('Wrapper', () => {
-  it('renders supplied children', () => {
-    const wrapper = mount(
-      <Wrapper>
-        <div>child</div>
-      </Wrapper>
-    );
-    expect(wrapper).to.contain(<div>child</div>);
-  });
-});
-```
+You will need `watchman` to use `yarn test` without `CI=true`.
+To install on OSX `brew bundle` in this directory.
