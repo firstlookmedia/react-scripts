@@ -2,6 +2,7 @@
   "dependencies": {
     "babel-eslint": "^8",
     "babel-plugin-relay": "^1.5",
+    "babel-polyfill": "^6.26.0",
     "compression": "^1.6.2",
     "env-config": "git+https://github.com/firstlookmedia/env-config.git",
     "eslint": "^4",
@@ -17,12 +18,18 @@
     "react-dom": "^16",
     "react-helmet": "^5",
     "react-relay": "^1.5.0",
-    "react-scripts": "git+ssh://git@github.com/firstlookmedia/react-scripts.git#react-16",
+    "react-scripts": "file:..",
     "react-test-renderer": "^16",
     "relay-compiler": "^1.5.0",
     "relay-runtime": "^1.5.0",
     "serialize-javascript": "^1.4.0",
     "source-map-support": "^0.4.6",
     "sync-request": "^6"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "update-schema": "node scripts/updateSchema.js"
   }
 }

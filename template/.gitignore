@@ -4,3 +4,4 @@ tmp
 node_modules
 build
 __generated__
+yarn-error.log

@@ -1,15 +1,12 @@
 import express from 'express';
 import compression from 'compression';
 import ReactDOMServer from 'react-dom/server';
-import Relay from 'react-relay';
 import manifest from 'react-scripts/lib/manifest';
 import assetMiddleware from 'react-scripts/lib/assetMiddleware';
 import errorHandlerMiddleware from 'react-scripts/lib/errorHandlerMiddleware';
 import defaultHeadersMiddleware from 'react-scripts/lib/defaultHeadersMiddleware';
 import graphqlProxyMiddleware from 'react-scripts/lib/graphqlProxyMiddleware';
 import { getFarceResult } from 'found/lib/server';
-import createRender from 'found/lib/createRender';
-import { Resolver } from 'found-relay/lib/modern';
 import serialize from 'serialize-javascript';
 import 'babel-polyfill';
 import { ServerFetcher } from './src/fetcher';
@@ -51,7 +48,7 @@ app.get('*', async (req, res) => {
     return;
   }
 
-  res.status(200).send(`<!doctype html>
+  res.status(status).send(`<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">

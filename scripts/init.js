@@ -89,6 +89,7 @@ module.exports = (appPath, appName, verbose, originalDirectory) => {
     console.log('We suggest that you begin by typing:');
     console.log();
     console.log(chalk.cyan('  cd'), cdpath);
+    console.log('  ' + chalk.cyan('git init'));
     console.log('  ' + chalk.cyan(command + ' update-schema'));
     console.log('  ' + chalk.cyan(command + ' start'));
     console.log();
