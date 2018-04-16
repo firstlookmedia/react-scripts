@@ -1,16 +1,19 @@
 # react-scripts
 
-This provides configuration for FLM's isomorphic React apps.
+Provides configuration for universal React/Relay apps.
+
+By default we expect a graphql server to exist as a separate service.
+The default template will query for `{ viewer { id } }` but this is not
+required of the schema.
 
 ## Install
-
-tl;dr
 
 ``` bash
 npm install -g create-react-app
 
 create-react-app --scripts-version=git+ssh://git@github.com/firstlookmedia/react-scripts.git my-app
 cd my-app
+yarn update-schema
 yarn start
 ```
 
@@ -19,8 +22,9 @@ yarn start
 `react-scripts` expects at least the following files:
 
 ```
-src/index.js  # entry to the client-side app
-server.js     # entry to the server
+src/index.js    # entry to the client-side app
+server.js       # entry to the server
+schema.graphql  # your graphql schema
 ```
 
 The output will become:

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "babel-eslint": "^8",
+    "babel-plugin-relay": "^1.5",
     "compression": "^1.6.2",
     "env-config": "git+https://github.com/firstlookmedia/env-config.git",
     "eslint": "^4",
@@ -22,15 +24,5 @@
     "serialize-javascript": "^1.4.0",
     "source-map-support": "^0.4.6",
     "sync-request": "^6"
-  },
-  "devDependencies": {
-    "babel-eslint": "^8",
-    "babel-plugin-relay": "^1.5"
-  },
-  "scripts": {
-    "build": "react-scripts build",
-    "start": "react-scripts start",
-    "test": "react-scripts test",
-    "update-schema": "node scripts/updateSchema.js"
   }
 }
