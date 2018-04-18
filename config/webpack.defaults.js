@@ -15,6 +15,9 @@ module.exports = {
     publicPath: '/assets/',
   },
   plugins: [],
+  resolve: {
+    modules: ['node_modules', path.resolve(__dirname, '../node_modules')],
+  },
   resolveLoader: {
     modules: [path.resolve(__dirname, '../node_modules')],
   },
