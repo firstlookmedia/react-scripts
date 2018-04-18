@@ -90,9 +90,6 @@ module.exports = {
         },
       }],
     }, {
-      test: /\.json$/,
-      use: require.resolve('json-loader'),
-    }, {
       test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
       use: 'imports-loader?define=>false&this=>window',
     }],
