@@ -9,8 +9,7 @@ let excludePaths = ['**/__generated__/**'];
 if ('react-scripts' in packageConfig) {
   const moduleName = packageConfig['react-scripts'].sharedComponentModule;
   if (moduleName) {
-    includePaths = includePaths.concat(`node_modules/${moduleName}/lib/**`);
-    excludePaths = excludePaths.concat(`node_modules/${moduleName}/node_modules/**`);
+    includePaths = includePaths.concat(`node_modules/${moduleName}/src/**`);
   }
 }
 
