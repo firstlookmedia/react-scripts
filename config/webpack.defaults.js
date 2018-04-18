@@ -26,7 +26,7 @@ module.exports = {
       test: /\.js$/,
       include: [path.resolve('src'), path.resolve('server.js')],
       use: [{
-        loader: 'babel-loader',
+        loader: require.resolve('babel-loader'),
         options: {
           passPerPreset: true,
           presets: [
@@ -43,7 +43,7 @@ module.exports = {
       test: /\.css$/,
       use: [
         {
-          loader: 'css-loader',
+          loader: require.resolve('css-loader'),
           options: {
             modules: true,
             importLoaders: 1,
@@ -53,7 +53,7 @@ module.exports = {
           },
         },
         {
-          loader: 'postcss-loader',
+          loader: require.resolve('postcss-loader'),
           options: {
             ident: 'postcss',
             plugins: () => ([
@@ -68,7 +68,7 @@ module.exports = {
       test: /\.(jpe?g|png|gif|svg)$/i,
       use: [
         {
-          loader: 'file-loader',
+          loader: require.resolve('file-loader'),
           options: {
             hash: 'sha512',
             digest: 'hex',
@@ -76,18 +76,24 @@ module.exports = {
           },
         },
         {
-          loader: 'image-webpack-loader',
+          loader: require.resolve('image-webpack-loader'),
           options: {
             bypassOnDebug: true,
           },
         },
       ],
     }, {
-      test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
-      use: 'url-loader?limit=10000&mimetype=application/font-woff',
+      test: /\.woff2?$/,
+      use: [{
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 10000,
+          mimetype: 'application/font-woff',
+        },
+      }],
     }, {
       test: /\.json$/,
-      use: 'json-loader',
+      use: require.resolve('json-loader'),
     }, {
       test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
       use: 'imports-loader?define=>false&this=>window',

@@ -6,7 +6,7 @@ module.exports = merge.smart({
   module: {
     rules: [{
       test: /\.css$/,
-      use: ['style-loader'],
+      use: [require.resolve('style-loader')],
     }],
   },
 }, defaults, {
