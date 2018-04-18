@@ -22,7 +22,7 @@ app.use(webpackDevMiddleware(compiler, {
   stats: 'minimal',
 }));
 
-app.use(webpackHotMiddleware(compiler));
+// app.use(webpackHotMiddleware(compiler));
 
 // since the devserver config uses style-loader, we don't want to serve the
 // extracted main.css, and without this line the browser hangs when asking the
@@ -125,7 +125,7 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
 const relayCompiler = spawn(
   path.resolve('./node_modules/.bin/relay-compiler'),
   relayCompilerArguments.concat('--watch'),
-  { stdio: 'inherit' }
+  { stdio: 'inherit' },
 );
 
 relayCompiler.on('close', code => process.exit(code));

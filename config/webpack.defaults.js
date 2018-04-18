@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const postcssCalc = require('postcss-calc');
 
 module.exports = {
+  mode: 'development',
   entry: [
     require.resolve('babel-polyfill'),
     path.resolve('src/index.js'),
@@ -14,52 +15,79 @@ module.exports = {
     publicPath: '/assets/',
   },
   plugins: [],
-  resolve: {
-    extensions: ['', '.js', '.json'],
-  },
   resolveLoader: {
-    root: path.resolve(__dirname, '../node_modules'),
+    modules: [path.resolve(__dirname, '../node_modules')],
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loader: 'babel-loader',
       include: [path.resolve('src'), path.resolve('server.js')],
-      query: {
-        passPerPreset: true,
-        presets: [
-          'babel-preset-react',
-          'babel-preset-env',
-          'babel-preset-stage-2',
-        ].map(require.resolve),
-        plugins: [
-          'babel-plugin-transform-runtime',
-        ].map(require.resolve),
-      },
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          passPerPreset: true,
+          presets: [
+            'babel-preset-react',
+            'babel-preset-env',
+            'babel-preset-stage-2',
+          ].map(require.resolve),
+          plugins: [
+            'babel-plugin-transform-runtime',
+          ].map(require.resolve),
+        },
+      }],
     }, {
-      name: 'css',
       test: /\.css$/,
-      loader: 'css?modules&importLoaders=1&context=src/components&localIdentName=[path][local]&-autoprefixer!postcss',
+      use: [
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            importLoaders: 1,
+            context: 'src/components',
+            localIdentName: '[path][local]',
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            ident: 'postcss',
+            plugins: () => ([
+              precss(),
+              autoprefixer(),
+              postcssCalc(),
+            ]),
+          },
+        },
+      ],
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
-      loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            hash: 'sha512',
+            digest: 'hex',
+            name: '[hash].[ext]',
+          },
+        },
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            bypassOnDebug: true,
+          },
+        },
       ],
     }, {
       test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
+      use: 'url-loader?limit=10000&mimetype=application/font-woff',
     }, {
       test: /\.json$/,
-      loader: 'json',
+      use: 'json-loader',
     }, {
       test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
-      loader: 'imports?define=>false&this=>window',
+      use: 'imports-loader?define=>false&this=>window',
     }],
   },
-  postcss: () => [
-    precss,
-    autoprefixer,
-    postcssCalc,
-  ],
 };

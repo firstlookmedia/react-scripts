@@ -20,6 +20,7 @@ module.exports = (appPath, appName, verbose, originalDirectory) => {
     start: 'react-scripts start',
     build: 'react-scripts build',
     test: 'react-scripts test',
+    'start-production': 'NODE_ENV=production node ./build/server.js',
     'update-schema': 'node scripts/updateSchema.js',
   };
 

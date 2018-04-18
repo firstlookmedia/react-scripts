@@ -54,14 +54,14 @@ app.get('*', async (req, res) => {
     <meta charset="utf-8">
     <title>Hello world</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/assets/${manifest['main.css']}" type="text/css" rel="stylesheet">
+    <link href="${manifest['main.css']}" type="text/css" rel="stylesheet">
   </head>
   <body>
     <div id="root">${ReactDOMServer.renderToString(element)}</div>
     <script>
       window.__RELAY_PAYLOADS__ = ${serialize(fetcher, { isJSON: true })}
     </script>
-    <script type="text/javascript" src="/assets/${manifest['main.js']}"></script>
+    <script type="text/javascript" src="${manifest['main.js']}"></script>
   </body>
 </html>`);
 });

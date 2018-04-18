@@ -1,25 +1,16 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const defaults = require('./webpack.defaults');
 
-const config = Object.assign({}, defaults, {
+module.exports = merge.smart({
+  module: {
+    rules: [{
+      test: /\.css$/,
+      use: ['style-loader'],
+    }],
+  },
+}, defaults, {
   devtool: 'source',
-  module: Object.assign({}, defaults.module, {
-    loaders: defaults.module.loaders.map(loader => {
-      if (loader.name === 'css') {
-        return Object.assign({}, loader, {
-          loader: `style-loader!${loader.loader}`,
-        });
-      }
-      return loader;
-    }),
-  }),
-  entry: [
-    require.resolve('webpack-hot-middleware/client'),
-  ].concat(defaults.entry),
-  plugins: defaults.plugins.concat([
-    new webpack.HotModuleReplacementPlugin(),
-  ]),
-  debug: true,
+  entry: [require.resolve('webpack-hot-middleware/client')],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 });
-
-module.exports = config;
