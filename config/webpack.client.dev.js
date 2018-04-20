@@ -10,7 +10,7 @@ module.exports = merge.smart({
     }],
   },
 }, defaults, {
-  devtool: 'source',
+  devtool: 'eval-source-map',
   entry: [require.resolve('webpack-hot-middleware/client')],
   plugins: [new webpack.HotModuleReplacementPlugin()],
 });
