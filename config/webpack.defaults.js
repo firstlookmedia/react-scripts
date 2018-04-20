@@ -27,6 +27,7 @@ module.exports = {
       use: [{
         loader: require.resolve('babel-loader'),
         options: {
+          cacheDirectory: true,
           passPerPreset: true,
           presets: [
             'babel-preset-react',
@@ -35,6 +36,7 @@ module.exports = {
           ].map(require.resolve),
           plugins: [
             'babel-plugin-transform-runtime',
+            'react-hot-loader/babel',
           ].map(require.resolve),
         },
       }],
