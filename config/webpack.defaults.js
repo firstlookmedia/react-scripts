@@ -1,5 +1,4 @@
 const path = require('path');
-const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -41,26 +40,33 @@ module.exports = {
         },
       }],
     }, {
-      test: /\.css$/,
+      test: /\.s?css$/,
       use: [
         {
           loader: require.resolve('css-loader'),
           options: {
+            sourceMap: true,
             modules: true,
-            importLoaders: 1,
+            importLoaders: 3,
             context: 'src/components',
             localIdentName: '[path][local]',
-            sourceMap: true,
           },
         },
+        require.resolve('resolve-url-loader'),
         {
           loader: require.resolve('postcss-loader'),
           options: {
+            sourceMap: true,
             ident: 'postcss',
             plugins: () => ([
-              precss(),
               autoprefixer(),
             ]),
+          },
+        },
+        {
+          loader: require.resolve('sass-loader'),
+          options: {
+            sourceMap: true,
           },
         },
       ],

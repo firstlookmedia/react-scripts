@@ -5,3 +5,4 @@ template/schema.json
 template/schema.graphql
 yarn-error.log
 .watchmanconfig
+.tern-port

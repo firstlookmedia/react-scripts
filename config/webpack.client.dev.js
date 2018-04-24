@@ -5,7 +5,7 @@ const defaults = require('./webpack.defaults');
 module.exports = merge.smart({
   module: {
     rules: [{
-      test: /\.css$/,
+      test: /\.s?css$/,
       use: [require.resolve('style-loader')],
     }],
   },
