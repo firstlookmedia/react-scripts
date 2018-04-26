@@ -8,7 +8,10 @@ const defaults = require('./webpack.defaults.js');
 module.exports = merge.smart({
   module: {
     rules: [{
-      test: /\.s?css$/,
+      test: /\.css$/,
+      use: [path.join(__dirname, '../lib/exportLocalsLoader.js')],
+    }, {
+      test: /\.scss$/,
       use: [path.join(__dirname, '../lib/exportLocalsLoader.js')],
     }],
   },

@@ -6,13 +6,14 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const defaults = require('./webpack.defaults');
 
-module.exports = merge.smart({
+const config = merge.smart({
   module: {
     rules: [{
-      test: /\.s?css$/,
-      use: [
-        MiniCSSExtractPlugin.loader,
-      ],
+      test: /\.css$/,
+      use: [MiniCSSExtractPlugin.loader],
+    }, {
+      test: /\.scss$/,
+      use: [MiniCSSExtractPlugin.loader],
     }],
   },
 }, defaults, {
@@ -33,3 +34,5 @@ module.exports = merge.smart({
     new OptimizeCSSAssetsPlugin({}),
   ],
 });
+
+module.exports = config;

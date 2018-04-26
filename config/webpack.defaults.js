@@ -1,10 +1,20 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const precss = require('precss');
+
+const cssOptions = {
+  sourceMap: true,
+  modules: true,
+  importLoaders: 1,
+  context: 'src/components',
+  localIdentName: '[path][local]',
+};
 
 module.exports = {
   mode: 'development',
+  context: __dirname,
   entry: [
-    require.resolve('babel-polyfill'),
+    'babel-polyfill',
     path.resolve('src/index.js'),
   ],
   output: {
@@ -14,57 +24,70 @@ module.exports = {
   },
   plugins: [],
   resolve: {
-    modules: ['node_modules', path.resolve(__dirname, '../node_modules')],
-  },
-  resolveLoader: {
-    modules: [path.resolve(__dirname, '../node_modules')],
+    modules: ['node_modules'],
   },
   module: {
     rules: [{
       test: /\.js$/,
       include: [path.resolve('src'), path.resolve('server.js')],
       use: [{
-        loader: require.resolve('babel-loader'),
+        loader: 'babel-loader',
         options: {
-          cacheDirectory: true,
           passPerPreset: true,
           presets: [
             'babel-preset-react',
             'babel-preset-env',
             'babel-preset-stage-0',
-          ].map(require.resolve),
+          ],
           plugins: [
             'babel-plugin-transform-runtime',
             'react-hot-loader/babel',
-          ].map(require.resolve),
+          ],
         },
       }],
     }, {
-      test: /\.s?css$/,
+      test: /\.css$/,
       use: [
         {
-          loader: require.resolve('css-loader'),
-          options: {
-            sourceMap: true,
-            modules: true,
-            importLoaders: 3,
-            context: 'src/components',
-            localIdentName: '[path][local]',
-          },
+          loader: 'css-loader',
+          options: cssOptions,
         },
-        require.resolve('resolve-url-loader'),
         {
-          loader: require.resolve('postcss-loader'),
+          loader: 'postcss-loader',
           options: {
             sourceMap: true,
             ident: 'postcss',
-            plugins: () => ([
+            plugins: [
+              precss(),
               autoprefixer(),
-            ]),
+            ],
+          },
+        },
+      ],
+    }, {
+      test: /\.scss$/,
+      use: [
+        {
+          loader: 'css-loader',
+          options: { ...cssOptions, importLoaders: 3 },
+        },
+        'resolve-url-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+
+            // needed to have two different postcss configs
+            // without this, it just silently fails
+            ident: 'postcss-sass',
+
+            plugins: [
+              autoprefixer(),
+            ],
           },
         },
         {
-          loader: require.resolve('sass-loader'),
+          loader: 'sass-loader',
           options: {
             sourceMap: true,
           },
@@ -74,7 +97,7 @@ module.exports = {
       test: /\.(jpe?g|png|gif|svg)$/i,
       use: [
         {
-          loader: require.resolve('file-loader'),
+          loader: 'file-loader',
           options: {
             hash: 'sha512',
             digest: 'hex',
@@ -82,7 +105,7 @@ module.exports = {
           },
         },
         {
-          loader: require.resolve('image-webpack-loader'),
+          loader: 'image-webpack-loader',
           options: {
             bypassOnDebug: true,
           },
@@ -91,7 +114,7 @@ module.exports = {
     }, {
       test: /\.woff2?$/,
       use: [{
-        loader: require.resolve('url-loader'),
+        loader: 'url-loader',
         options: {
           limit: 10000,
           mimetype: 'application/font-woff',
