@@ -1,6 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
+const postcssCalc = require('postcss-calc');
 
 const cssOptions = {
   sourceMap: true,
@@ -58,8 +59,9 @@ module.exports = {
             sourceMap: true,
             ident: 'postcss',
             plugins: [
-              precss(),
               autoprefixer(),
+              postcssCalc(),
+              precss(),
             ],
           },
         },
