@@ -12,6 +12,7 @@
     "aws-sdk": "^2.94.0",
     "babel-cli": "^6",
     "babel-core": "^6",
+    "babel-jest": "^19",
     "babel-loader": "^7",
     "babel-plugin-transform-runtime": "^6",
     "babel-polyfill": "^6",
