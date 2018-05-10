@@ -1,5 +1,5 @@
 const Relay = require('react-relay/classic');
 
-Relay.createFragmentContainer = (component) => component;
+Relay.createFragmentContainer = component => component;
 
 module.exports = Relay;
