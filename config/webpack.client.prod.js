@@ -4,7 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const merge = require('webpack-merge');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { ReactLoadablePlugin } = require('react-laodable/webpack');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 const defaults = require('./webpack.defaults');
 
 const config = merge.smart({
