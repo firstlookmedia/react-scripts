@@ -49,6 +49,7 @@
     "precss": "^2",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react-hot-loader": "^4.1.1",
+    "react-loadable": "^5.4.0",
     "resolve-bin": "^0.4.0",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.1",
