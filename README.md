@@ -1,17 +1,20 @@
 # react-scripts
 
-This provides configuration for FLM's isomorphic React apps.
+Provides configuration for universal React/Relay apps.
+
+By default we expect a graphql server to exist as a separate service.
+The default template will query for `{ viewer { id } }` but this is not
+required of the schema.
 
 ## Install
-
-tl;dr
 
 ``` bash
 npm install -g create-react-app
 
 create-react-app --scripts-version=git+ssh://git@github.com/firstlookmedia/react-scripts.git my-app
 cd my-app
-npm start
+yarn update-schema
+yarn start
 ```
 
 ## Usage
@@ -19,8 +22,9 @@ npm start
 `react-scripts` expects at least the following files:
 
 ```
-src/index.js  # entry to the client-side app
-server.js     # entry to the server
+src/index.js    # entry to the client-side app
+server.js       # entry to the server
+schema.graphql  # your graphql schema
 ```
 
 The output will become:
@@ -34,7 +38,7 @@ build/assets/2d0823jd.css   # any other compiled assets (css, images, fonts)
 
 ---
 
-#### `npm start`
+#### `yarn start`
 
 Starts the development environment:
 
@@ -42,37 +46,13 @@ Starts the development environment:
 - A webpack dev server, which hot-reloads and proxies requests to the app server,
   on [http://localhost:3233](http://localhost:3233)
 
-#### `npm build`
+#### `yarn build`
 
 Builds the production assets to the `build` folder.
 
-#### `npm test`
+#### `yarn test`
 
-You will need `watchman` to use `npm test` without `CI=true`. To install on OSX `brew bundle` in this directory.
+Runs jest tests. `react-scripts` will look for any file named `__spec.js`.
 
-Runs mocha tests. `react-scripts` will look for any file named `__spec.js`.
-
-`react-scripts` adds chai assertion helpers for
-[enzyme](https://github.com/producthunt/chai-enzyme)
-and [sinon](https://github.com/domenic/sinon-chai)
-
-Example test:
-
-``` javascript
-import React from 'react';
-import { mount } from 'enzyme';
-import { expect } from 'chai';
-
-import Wrapper from '.';
-
-describe('Wrapper', () => {
-  it('renders supplied children', () => {
-    const wrapper = mount(
-      <Wrapper>
-        <div>child</div>
-      </Wrapper>
-    );
-    expect(wrapper).to.contain(<div>child</div>);
-  });
-});
-```
+You will need `watchman` to use `yarn test` without `CI=true`.
+To install on OSX `brew bundle` in this directory.

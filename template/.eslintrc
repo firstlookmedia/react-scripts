@@ -1,0 +1,20 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "extends": ["airbnb-base", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/prop-types": 0,
+    "react/no-render-return-value": 1,
+    "no-underscore-dangle": 0,
+    "global-require": 1,
+    "prefer-arrow-callback": 1
+  },
+  "env": {
+    "jest": true
+  }
+}

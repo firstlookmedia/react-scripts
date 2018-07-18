@@ -1,11 +1,21 @@
 const path = require('path');
-const precss = require('precss');
 const autoprefixer = require('autoprefixer');
+const precss = require('precss');
 const postcssCalc = require('postcss-calc');
 
+const cssOptions = {
+  sourceMap: true,
+  modules: true,
+  importLoaders: 1,
+  context: 'src/components',
+  localIdentName: '[path][local]',
+};
+
 module.exports = {
+  mode: 'development',
+  context: __dirname,
   entry: [
-    require.resolve('babel-polyfill'),
+    'babel-polyfill',
     path.resolve('src/index.js'),
   ],
   output: {
@@ -15,51 +25,106 @@ module.exports = {
   },
   plugins: [],
   resolve: {
-    extensions: ['', '.js', '.json'],
-  },
-  resolveLoader: {
-    root: path.resolve(__dirname, '../node_modules'),
+    modules: ['node_modules'],
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loader: 'babel-loader',
       include: [path.resolve('src'), path.resolve('server.js')],
-      query: {
-        passPerPreset: true,
-        presets: [
-          'babel-preset-react',
-          'babel-preset-es2015',
-          'babel-preset-stage-0',
-        ].map(require.resolve),
-        plugins: [
-          'babel-plugin-transform-runtime',
-        ].map(require.resolve),
-      },
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          passPerPreset: true,
+          presets: [
+            'babel-preset-react',
+            'babel-preset-env',
+            'babel-preset-stage-0',
+          ],
+          plugins: [
+            'babel-plugin-transform-runtime',
+            'react-hot-loader/babel',
+          ],
+        },
+      }],
     }, {
-      name: 'css',
       test: /\.css$/,
-      loader: 'css?modules&importLoaders=1&context=src/components&localIdentName=[path][local]&-autoprefixer!postcss',
-    }, {
-      test: /\.(jpe?g|png|gif|svg)$/i,
-      loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false',
+      use: [
+        {
+          loader: 'css-loader',
+          options: cssOptions,
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+            ident: 'postcss',
+            plugins: [
+              autoprefixer(),
+              postcssCalc(),
+              precss(),
+            ],
+          },
+        },
       ],
     }, {
-      test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url?limit=10000&mimetype=application/font-woff',
+      test: /\.scss$/,
+      use: [
+        {
+          loader: 'css-loader',
+          options: { ...cssOptions, importLoaders: 3 },
+        },
+        'resolve-url-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+
+            // needed to have two different postcss configs
+            // without this, it just silently fails
+            ident: 'postcss-sass',
+
+            plugins: [
+              autoprefixer(),
+            ],
+          },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
     }, {
-      test: /\.json$/,
-      loader: 'json',
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            hash: 'sha512',
+            digest: 'hex',
+            name: '[hash].[ext]',
+          },
+        },
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            bypassOnDebug: true,
+          },
+        },
+      ],
+    }, {
+      test: /\.woff2?$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          mimetype: 'application/font-woff',
+        },
+      }],
     }, {
       test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
-      loader: 'imports?define=>false&this=>window',
+      use: 'imports-loader?define=>false&this=>window',
     }],
   },
-  postcss: () => [
-    precss,
-    autoprefixer,
-    postcssCalc,
-  ],
 };

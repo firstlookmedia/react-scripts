@@ -1,12 +1,21 @@
 const path = require('path');
-const fs = require('fs');
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-
+const merge = require('webpack-merge');
 const defaults = require('./webpack.defaults.js');
 
-const config = Object.assign({}, defaults, {
+module.exports = merge.smart({
+  module: {
+    rules: [{
+      test: /\.css$/,
+      use: [path.join(__dirname, '../lib/exportLocalsLoader.js')],
+    }, {
+      test: /\.scss$/,
+      use: [path.join(__dirname, '../lib/exportLocalsLoader.js')],
+    }],
+  },
+}, defaults, {
   target: 'node',
   node: {
     console: false,
@@ -21,33 +30,16 @@ const config = Object.assign({}, defaults, {
   output: {
     filename: 'server.js',
     path: path.resolve('build'),
-    publicPath: defaults.output.publicPath,
   },
-  // put all node_modules into externals (node will just require() them usual)
+  // put all node_modules into externals (require() them as usual w/o webpack)
   externals: [nodeExternals()],
-  module: Object.assign({}, defaults.module, {
-    loaders: defaults.module.loaders.map(loader => {
-      if (loader.name === 'css') {
-        return Object.assign({}, loader, {
-          loader: undefined,
-          loaders: [
-            path.join(__dirname, '../lib/exportLocalsLoader.js'),
-            loader.loader,
-          ],
-        });
-      }
-      return loader;
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: 'require("source-map-support").install();',
+      raw: true,
+      entryOnly: true,
     }),
-  }),
-  plugins: defaults.plugins.concat([
-    new webpack.BannerPlugin(
-      'require("source-map-support").install();',
-      { raw: true, entryOnly: false }
-    ),
-
     new ProgressBarPlugin(),
-  ]),
+  ],
   devtool: 'source-map',
 });
-
-module.exports = config;

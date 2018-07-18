@@ -1,3 +1,8 @@
 node_modules
 template/yarn.lock
 template/package.json
+template/schema.json
+template/schema.graphql
+yarn-error.log
+.watchmanconfig
+.tern-port

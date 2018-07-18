@@ -20,7 +20,8 @@ module.exports = (appPath, appName, verbose, originalDirectory) => {
     start: 'react-scripts start',
     build: 'react-scripts build',
     test: 'react-scripts test',
-    'test:watch': 'react-scripts test:watch',
+    'start-production': 'NODE_ENV=production node ./build/server.js',
+    'update-schema': 'node scripts/updateSchema.js',
   };
 
   fs.writeFileSync(
@@ -80,9 +81,17 @@ module.exports = (appPath, appName, verbose, originalDirectory) => {
     console.log(chalk.cyan('  ' + command + ' test'));
     console.log('    Starts the test runner.');
     console.log();
+    console.log(chalk.cyan('  ' + command + ' update-schema'));
+    console.log('    Updates the graphql schema. Set GRAPHQL_ORIGIN to ' +
+                'your local graphql server. e.g. \n' +
+                '      $ GRAPHQL_ORIGIN=http://localhost:4000 ' + command +
+                ' update-schema');
+    console.log();
     console.log('We suggest that you begin by typing:');
     console.log();
     console.log(chalk.cyan('  cd'), cdpath);
+    console.log('  ' + chalk.cyan('git init'));
+    console.log('  ' + chalk.cyan(command + ' update-schema'));
     console.log('  ' + chalk.cyan(command + ' start'));
     console.log();
     console.log('Happy hacking!');
