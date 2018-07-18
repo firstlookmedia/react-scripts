@@ -1,4 +1,4 @@
-# react-scripts
+# firstlookmedia/react-scripts
 
 Provides configuration for universal React/Relay apps.
 
