@@ -7,12 +7,11 @@ if (!process.env.CI && argv.indexOf('--coverage') < 0) {
   argv.push('--watch');
 }
 
-const createJestConfig = require('./utils/createJestConfig');
 const path = require('path');
 
 argv.push(
   '--config',
-  JSON.stringify(createJestConfig())
+  path.resolve(__dirname, 'utils', 'jestConfig.js'),
 );
 
 jest.run(argv);
