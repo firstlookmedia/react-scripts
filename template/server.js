@@ -32,6 +32,14 @@ app.use(express.static('public'));
 app.use(defaultHeadersMiddleware);
 app.use('/graphql', graphqlProxyMiddleware(GRAPHQL_URL));
 
+const stylesheetTag = (href) => {
+  if (!href) {
+    return '';
+  }
+
+  return `<link href="${href}" type="text/css" rel="stylesheet">`
+};
+
 app.get('*', async (req, res) => {
   const fetcher = new ServerFetcher(GRAPHQL_URL);
 
@@ -54,7 +62,7 @@ app.get('*', async (req, res) => {
     <meta charset="utf-8">
     <title>Hello world</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="${manifest['main.css']}" type="text/css" rel="stylesheet">
+    ${stylesheetTag(manifest['main.css'])}
   </head>
   <body>
     <div id="root">${ReactDOMServer.renderToString(element)}</div>
