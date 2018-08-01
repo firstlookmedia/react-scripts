@@ -123,7 +123,7 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
 });
 
 const relayCompiler = spawn(
-  path.resolve('./node_modules/.bin/relay-compiler-plus'),
+  path.resolve('./node_modules/.bin/relay-compiler'),
   relayCompilerArguments.concat('--watch'),
   { stdio: 'inherit' },
 );

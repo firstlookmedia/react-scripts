@@ -60,7 +60,7 @@ function handler(config, err, stats) {
 }
 console.log('Compiling relay queries...');
 const relayCompiler = spawn(
-  path.resolve('./node_modules/.bin/relay-compiler-plus'),
+  path.resolve('./node_modules/.bin/relay-compiler'),
   relayCompilerArguments,
   { stdio: 'inherit' }
 );
