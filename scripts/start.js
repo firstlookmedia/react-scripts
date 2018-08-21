@@ -11,6 +11,7 @@ const chalk = require('chalk');
 const config = require('../config/webpack.client.dev');
 const serverConfig = require('../config/webpack.server.dev');
 const relayCompilerArguments = require('./utils/relayCompilerArguments');
+const buildPersistedQueries = require('../lib/buildPersistedQueries');
 
 const app = express();
 
@@ -117,6 +118,7 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
   if (stats.hasErrors()) {
     console.log(stats.toString('errors-only'));
   } else {
+    buildPersistedQueries();
     console.log('Starting new server...');
     restartServer();
   }
@@ -129,4 +131,7 @@ const relayCompiler = spawn(
 );
 
 relayCompiler.on('close', code => process.exit(code));
+
+relayCompiler.on('data', d => console.log(d));
+
 process.on('close', code => relayCompiler.exit(code));

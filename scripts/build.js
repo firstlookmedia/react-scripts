@@ -72,6 +72,8 @@ relayCompiler.on('close', (code) => {
     return;
   }
 
+  buildPersistedQueries(true);
+
   console.log('Building optimized assets...');
   webpack(clientConfig).run((err, stats) => {
     handler(clientConfig, err, stats);
@@ -79,6 +81,5 @@ relayCompiler.on('close', (code) => {
     console.log();
     console.log('Building server files...');
     webpack(serverConfig).run(handler.bind(null, serverConfig));
-    buildPersistedQueries();
   });
 });
