@@ -26,5 +26,5 @@ module.exports = [
   '--schema',
   'schema.json',
 
-  '--persist'
+  '--persist',
 ].reduce((acc, item) => acc.concat(item), []);

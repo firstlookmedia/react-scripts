@@ -11,6 +11,7 @@ const spawn = require('cross-spawn');
 const clientConfig = require('../config/webpack.client.prod');
 const serverConfig = require('../config/webpack.server');
 const relayCompilerArguments = require('./utils/relayCompilerArguments');
+const buildPersistedQueries = require('../lib/buildPersistedQueries');
 
 function printFileSizes(stats, config) {
   const outputPath = config.output.path;
@@ -78,5 +79,6 @@ relayCompiler.on('close', (code) => {
     console.log();
     console.log('Building server files...');
     webpack(serverConfig).run(handler.bind(null, serverConfig));
+    buildPersistedQueries();
   });
 });
