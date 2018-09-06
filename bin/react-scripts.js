@@ -13,6 +13,7 @@ switch (script) {
   case 'build':
   case 'start':
   case 'upload':
+  case 'upload-queries':
   case 'test': {
     const result = spawn.sync(
       'node',
