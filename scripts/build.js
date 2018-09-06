@@ -70,6 +70,6 @@ relayCompiler.on('close', (code) => {
     console.log();
     console.log('Building server files...');
     webpack(serverConfig).run(handler.bind(null, serverConfig));
-    buildPersistedQueries(true);
+    buildPersistedQueries();
   });
 });
