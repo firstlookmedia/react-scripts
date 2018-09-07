@@ -26,5 +26,5 @@ module.exports = [
   '--schema',
   'schema.json',
 
-  '--persist',
+  process.env.PERSIST_QUERIES ? '--persist' : '',
 ].reduce((acc, item) => acc.concat(item), []);
