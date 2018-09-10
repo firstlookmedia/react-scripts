@@ -14,7 +14,7 @@ class FetcherBase {
 
   async get(operation, variables) {
     const queryParams = qs.stringify(variables, { sort: (a, b) => a.localeCompare(b) });
-    const staticQueryUrl = encodeURIComponent(`${this.url}/${operation.id}?${queryParams}`);
+    const staticQueryUrl = `${this.url}/${operation.id}?${encodeURIComponent(queryParams)}`;
     const response = await fetch(staticQueryUrl, {
       method: 'GET',
       credentials: 'same-origin',

@@ -56,3 +56,7 @@ Runs jest tests. `react-scripts` will look for any file named `__spec.js`.
 
 You will need `watchman` to use `yarn test` without `CI=true`.
 To install on OSX `brew bundle` in this directory.
+
+## Persisted queries
+
+
