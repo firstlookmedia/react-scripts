@@ -1,5 +1,6 @@
 import 'isomorphic-fetch';
 import envConfig from 'env-config';
+import qs from 'qs';
 
 // TODO: Update this when someone releases a real, production-quality solution
 // for handling universal rendering with Relay Modern. For now, this is just
@@ -12,7 +13,8 @@ class FetcherBase {
   }
 
   async get(operation, variables) {
-    const staticQueryUrl = encodeURIComponent(`${this.url}/${operation.id}?variables=${JSON.stringify(variables)}`);
+    const queryParams = qs.stringify(variables, { sort: (a, b) => a.localeCompare(b) });
+    const staticQueryUrl = encodeURIComponent(`${this.url}/${operation.id}?${queryParams}`);
     const response = await fetch(staticQueryUrl, {
       method: 'GET',
       credentials: 'same-origin',
