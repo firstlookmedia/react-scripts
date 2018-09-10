@@ -59,4 +59,10 @@ To install on OSX `brew bundle` in this directory.
 
 ## Persisted queries
 
+By default, sites will not persist static queries. To enable persisted queries:
 
+1. add `PERSIST_QUERIES: "true"` to all build circle configs
+2. add `QUERIES_S3_BUCKET: "queries.[dev|staging|prod].flmcloud.net"`to all build circle configs
+3. upgrade to the newest version of React scripts that has the `get` and `post` fetcher methods
+
+Note: persisted queries are always turned off during local development.
