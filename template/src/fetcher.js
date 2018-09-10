@@ -1,4 +1,5 @@
 import 'isomorphic-fetch';
+import envConfig from 'env-config';
 
 // TODO: Update this when someone releases a real, production-quality solution
 // for handling universal rendering with Relay Modern. For now, this is just
@@ -11,7 +12,7 @@ class FetcherBase {
   }
 
   async get(operation, variables) {
-    const staticQueryUrl = `${this.url}/${operation.id}?variables=${JSON.stringify(variables)}`;
+    const staticQueryUrl = encodeURIComponent(`${this.url}/${operation.id}?variables=${JSON.stringify(variables)}`);
     const response = await fetch(staticQueryUrl, {
       method: 'GET',
       credentials: 'same-origin',
@@ -63,7 +64,8 @@ export class ServerFetcher extends FetcherBase {
 }
 
 export class ClientFetcher extends FetcherBase {
-  constructor(url, payloads, isStaticQueries) {
+  constructor(url, payloads) {
+    const isStaticQueries = envConfig.PERSIST_QUERIES;
     super(url, isStaticQueries);
 
     this.payloads = payloads;
