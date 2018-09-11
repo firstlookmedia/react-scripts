@@ -2,11 +2,14 @@ import BrowserProtocol from 'farce/lib/BrowserProtocol';
 import createInitialFarceRouter from 'found/lib/createInitialFarceRouter';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import envConfig from 'env-config';
 import { ClientFetcher } from './fetcher';
 
 import './globals.css';
 
 const root = document.getElementById('root');
+
+envConfig.hydrate();
 
 const renderApp = async () => {
   const {
