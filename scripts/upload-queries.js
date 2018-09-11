@@ -6,31 +6,30 @@ const fs = require('fs');
 const mime = require('mime');
 
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
-const bucket = process.env.ASSETS_S3_BUCKET;
+const queriesBucket = process.env.QUERIES_S3_BUCKET;
 const uploadParams = {
-  Bucket: bucket,
+  Bucket: queriesBucket,
   Key: '',
   Body: '',
   ACL: 'public-read',
   // Sets Cache-Control header and in Metadata
   CacheControl: 'public, max-age=31536000',
 };
-const projectName = require(path.join(process.cwd(), 'package.json')).name;
-const base_dir = './build/assets';
+const baseDir = './build/queries';
 
-if (!bucket) {
-  console.error('ASSETS_S3_BUCKET is empty. Exiting.');
+if (!queriesBucket) {
+  console.error('QUERIES_S3_BUCKET is empty. Exiting.');
   process.exit(1);
 }
 
-fs.readdir(base_dir, (err, files) => {
+fs.readdir(baseDir, (err, files) => {
   files.forEach((file) => {
-    const fileStream = fs.createReadStream(path.join(base_dir, file));
+    const fileStream = fs.createReadStream(path.join(baseDir, file));
     fileStream.on('error', (err) => {
       console.log('File Error', err);
     });
     uploadParams.Body = fileStream;
-    uploadParams.Key = `${projectName}/assets/${file}`;
+    uploadParams.Key = `queries/${file}`;
 
     // Sets Content-Type header and in Metadata
     const type = mime.getType(file);
@@ -42,7 +41,7 @@ fs.readdir(base_dir, (err, files) => {
         console.log('Error', err);
       }
       if (data) {
-        console.log('Upload Success', data.Location);
+        console.log('Queries upload Success', data.Location);
       }
     });
   });

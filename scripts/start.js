@@ -129,4 +129,5 @@ const relayCompiler = spawn(
 );
 
 relayCompiler.on('close', code => process.exit(code));
+
 process.on('close', code => relayCompiler.exit(code));

@@ -56,3 +56,19 @@ Runs jest tests. `react-scripts` will look for any file named `__spec.js`.
 
 You will need `watchman` to use `yarn test` without `CI=true`.
 To install on OSX `brew bundle` in this directory.
+
+## Persisted queries
+
+By default, sites will not persist static queries. To enable persisted queries:
+
+1. add `PERSIST_QUERIES: "true"` to all build circle configs
+2. add `QUERIES_S3_BUCKET` property to all build and deploy circle configs and point it to the s3 bucket where the site's queries live
+3. upgrade to the newest version of React scripts that has the `get` and `post` fetcher methods
+4. install our forked version of relay compiler: https://github.com/firstlookmedia/relay contains the .tar.gz of the compiler and you refer to it like so in the `package.json`: https://github.com/firstlookmedia/relay/releases/download/v1.5.0-flm.1/relay-compiler-1.5.0-flm.1.tar.gz
+
+Note: persisted queries are always turned off during local development.
+
+### relay compiler
+
+We are using a forked version of relay similar to what the artsy folks are doing. Hopefully, this fork will get merged into relay proper, at which point we won't need to do anything special to get persisted static queries to work. Until then, we will need to stick to relay version `1.5.0` and if we do need to upgrade we'll have to update our fork, rebuild the compiler, and release it. The artsy folks and others have done an excellent job of keeping this fork up to date with subsequent relay releases, so this should not pose much a problem. In fact, it would be great for us to help with merging upstream relay releases into the PR version on the relay repository if necessary.
+

@@ -8,6 +8,7 @@ import defaultHeadersMiddleware from 'react-scripts/lib/defaultHeadersMiddleware
 import graphqlProxyMiddleware from 'react-scripts/lib/graphqlProxyMiddleware';
 import { getFarceResult } from 'found/lib/server';
 import serialize from 'serialize-javascript';
+import envConfig from 'env-config';
 import 'babel-polyfill';
 import { ServerFetcher } from './src/fetcher';
 import {
@@ -21,7 +22,12 @@ const {
   APP_PORT = 3232,
   GRAPHQL_ORIGIN = 'http://localhost:3002',
   GRAPHQL_PATH = '/graphql',
+  PERSIST_QUERIES = false,
 } = process.env;
+
+envConfig.register({
+  PERSIST_QUERIES,
+});
 
 const GRAPHQL_URL = `${GRAPHQL_ORIGIN}${GRAPHQL_PATH}`;
 
@@ -69,6 +75,7 @@ app.get('*', async (req, res) => {
     <script>
       window.__RELAY_PAYLOADS__ = ${serialize(fetcher, { isJSON: true })}
     </script>
+    ${envConfig.renderScriptTag()}
     <script type="text/javascript" src="${manifest['main.js']}"></script>
   </body>
 </html>`);
