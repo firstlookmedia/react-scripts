@@ -64,7 +64,7 @@ By default, sites will not persist static queries. To enable persisted queries:
 1. add `PERSIST_QUERIES: "true"` to all build circle configs
 2. add `QUERIES_S3_BUCKET` property to all build and deploy circle configs and point it to the s3 bucket where the site's queries live
 3. upgrade to the newest version of React scripts that has the `get` and `post` fetcher methods
-4. install our forked version of relay compiler: https://github.com/firstlookmedia/relay contains the .tar.gz of the compiler and you install it like so: https://github.com/firstlookmedia/relay/releases/download/v1.5.0-flm.1/relay-compiler-1.5.0-flm.1.tar.gz
+4. install our forked version of relay compiler: https://github.com/firstlookmedia/relay contains the .tar.gz of the compiler and you refer to it like so in the `package.json`: https://github.com/firstlookmedia/relay/releases/download/v1.5.0-flm.1/relay-compiler-1.5.0-flm.1.tar.gz
 
 Note: persisted queries are always turned off during local development.
 
