@@ -34,14 +34,14 @@ module.exports = {
     rules: [
       {
         test: /\.tsx*$/,
-        include: [path.resolve('src'), path.resolve('server.js')],
+        include: [path.resolve('src')],
         use: [
-          {
-            loader: 'ts-loader',
-          },
           {
             loader: 'babel-loader',
             options: babelOptions,
+          },
+          {
+            loader: 'ts-loader',
           },
         ],
       },
