@@ -11,6 +11,12 @@ const cssOptions = {
   localIdentName: '[path][local]',
 };
 
+const babelOptions = {
+  passPerPreset: true,
+  presets: ['babel-preset-react', 'babel-preset-env', 'babel-preset-stage-0'],
+  plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
+};
+
 module.exports = {
   mode: 'development',
   context: __dirname,
@@ -27,7 +33,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.[jt]s$/,
+        test: /\.tsx*$/,
         include: [path.resolve('src'), path.resolve('server.js')],
         use: [
           {
@@ -35,11 +41,17 @@ module.exports = {
           },
           {
             loader: 'babel-loader',
-            options: {
-              passPerPreset: true,
-              presets: ['babel-preset-react', 'babel-preset-env', 'babel-preset-stage-0'],
-              plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
-            },
+            options: babelOptions,
+          },
+        ],
+      },
+      {
+        test: /\.jsx*$/,
+        include: [path.resolve('src'), path.resolve('server.js')],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: babelOptions,
           },
         ],
       },
