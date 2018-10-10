@@ -30,6 +30,9 @@ module.exports = {
   resolve: {
     modules: ['node_modules'],
     extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      Types: path.resolve(__dirname, 'src/__generated__'),
+    },
   },
   module: {
     rules: [

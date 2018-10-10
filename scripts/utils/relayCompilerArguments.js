@@ -33,5 +33,8 @@ module.exports = [
   '--language',
   'typescript',
 
+  '--artifactDirectory',
+  'src/__generated__',
+
   process.env.PERSIST_QUERIES ? '--persist' : '',
 ].reduce((acc, item) => acc.concat(item), []);
