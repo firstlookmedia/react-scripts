@@ -2,6 +2,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
 const postcssCalc = require('postcss-calc');
+const packageConfig = require('./packageConfig');
 
 const cssOptions = {
   sourceMap: true,
@@ -20,7 +21,10 @@ const babelOptions = {
 module.exports = {
   mode: 'development',
   context: __dirname,
-  entry: ['babel-polyfill', path.resolve('src/index.js')],
+  entry: [
+    'babel-polyfill',
+    path.resolve(packageConfig.clientEntry || 'src/index.js'),
+  ],
   output: {
     filename: '[name].js',
     path: path.resolve('build/assets'),

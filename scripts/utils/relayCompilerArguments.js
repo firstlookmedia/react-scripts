@@ -1,16 +1,13 @@
 const path = require('path');
-
-const packageConfig = require(path.resolve('package.json'));
+const packageConfig = require('../../config/packageConfig.js');
 
 // relay compiler
 
 let includePaths = ['src/**'];
 const excludePaths = ['**/__generated__/**'];
-if ('react-scripts' in packageConfig) {
-  const moduleName = packageConfig['react-scripts'].sharedComponentModule;
-  if (moduleName) {
-    includePaths = includePaths.concat(`node_modules/${moduleName}/src/**`);
-  }
+const moduleName = packageConfig.sharedComponentModule;
+if (moduleName) {
+  includePaths = includePaths.concat(`node_modules/${moduleName}/src/**`);
 }
 const extensions = ['js', 'jsx', 'ts', 'tsx'];
 

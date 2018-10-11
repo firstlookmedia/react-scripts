@@ -4,6 +4,7 @@ const nodeExternals = require('webpack-node-externals');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const merge = require('webpack-merge');
 const defaults = require('./webpack.defaults.js');
+const packageConfig = require('./packageConfig');
 
 module.exports = merge.smart({
   module: {
@@ -26,7 +27,7 @@ module.exports = merge.smart({
     __dirname: false,
     setImmediate: false,
   },
-  entry: path.resolve('server.js'),
+  entry: path.resolve(packageConfig.serverEntry || 'server.js'),
   output: {
     filename: 'server.js',
     path: path.resolve('build'),
