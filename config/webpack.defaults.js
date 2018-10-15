@@ -33,7 +33,7 @@ module.exports = {
   plugins: [],
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.mjs'],
     alias: {
       Types: path.resolve(__dirname, 'src/__generated__'),
     },
@@ -62,6 +62,11 @@ module.exports = {
             options: babelOptions,
           },
         ],
+      },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
       },
       {
         test: /\.css$/,
