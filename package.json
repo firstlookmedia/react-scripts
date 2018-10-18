@@ -25,7 +25,7 @@
     "cross-spawn": "^6",
     "css-loader": "^0.28",
     "enzyme": "^3",
-    "enzyme-adapter-react-16": "^1",
+    "enzyme-adapter-react-16": "^1.6.0",
     "enzyme-to-json": "^3.3",
     "express": "^4.14.0",
     "file-loader": "^1",
