@@ -37,7 +37,6 @@
     "image-webpack-loader": "^4",
     "imports-loader": "^0.8",
     "jest": "^23.4.0",
-    "jest-environment-jsdom": "^23.4.0",
     "jsdom": "^11",
     "loader-utils": "^1",
     "mime": "^2.0.3",
