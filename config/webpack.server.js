@@ -18,6 +18,7 @@ module.exports = merge.smart({
   },
 }, defaults, {
   target: 'node',
+  mode: 'production',
   node: {
     console: false,
     global: false,

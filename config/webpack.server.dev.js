@@ -1,3 +1,5 @@
 const defaults = require('./webpack.server');
 
-module.exports = Object.assign({}, defaults, {});
+module.exports = Object.assign({}, defaults, {
+  mode: 'development',
+});
