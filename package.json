@@ -53,6 +53,7 @@
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21",
+    "ts-jest": "^23.10.5",
     "ts-loader": "^5.2.1",
     "url-loader": "^1",
     "webpack": "^4",
