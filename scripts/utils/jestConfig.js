@@ -19,7 +19,7 @@ module.exports = {
   },
 
   collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.stories.tsx'],
-  testRegex: 'src/.*__spec\\.js$',
+  testRegex: 'src/.*__spec\\.(js|tsx)$',
   snapshotSerializers: [require.resolve('enzyme-to-json/serializer')],
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
 };
