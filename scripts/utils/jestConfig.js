@@ -1,5 +1,4 @@
 const path = require('path');
-const { defaults: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   rootDir: process.cwd(),
@@ -15,7 +14,7 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   transform: {
-    ...tsjPreset.transform,
+    '^.+\\.tsx?$': 'ts-jest',
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
   },
 
