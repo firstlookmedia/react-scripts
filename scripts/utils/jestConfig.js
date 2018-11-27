@@ -13,6 +13,7 @@ module.exports = {
     '^react-relay/classic$': path.resolve(__dirname, '__mocks__/react-relay/classic.js'),
     '^react-relay$': path.resolve(__dirname, '__mocks__/react-relay.js'),
   },
+  testEnvironment: 'jsdom',
   transform: {
     ...tsjPreset.transform,
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
