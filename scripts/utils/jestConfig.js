@@ -14,7 +14,6 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
   },
 
