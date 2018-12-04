@@ -24,4 +24,9 @@ module.exports = {
   testRegex: 'src/.*__spec\\.(jsx?|tsx?)$',
   snapshotSerializers: [require.resolve('enzyme-to-json/serializer')],
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
+  globals: {
+    'ts-jest': {
+      useBabelrc: true,
+    },
+  },
 };
