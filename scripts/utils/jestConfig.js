@@ -17,7 +17,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   transform: {
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
-    '^.+\\.(ts|tsx)$': 'ts-jest'.createTransformer({ babelConfig: babelOptions }),
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
 
   collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.stories.tsx'],
