@@ -7,7 +7,7 @@ module.exports = babelJest.createTransformer({
   plugins: ['babel-plugin-transform-runtime'].map(require.resolve),
   env: {
     test: {
-      plugins: ['babel-plugin-require-context-hook'].map(require.resolve),
+      plugins: ['require-context-hook'].map(require.resolve),
     },
   },
 });

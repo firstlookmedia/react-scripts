@@ -1,4 +1,5 @@
 const path = require('path');
+const babelOptions = require('./babelTransform');
 
 module.exports = {
   rootDir: process.cwd(),
@@ -16,7 +17,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   transform: {
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': 'ts-jest'.createTransformer({ babelConfig: babelOptions }),
   },
 
   collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.stories.tsx'],
