@@ -12,13 +12,15 @@ module.exports = {
     '^react-relay/classic$': path.resolve(__dirname, '__mocks__/react-relay/classic.js'),
     '^react-relay$': path.resolve(__dirname, '__mocks__/react-relay.js'),
   },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testEnvironment: 'jsdom',
   transform: {
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
 
   collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.stories.tsx'],
-  testRegex: 'src/.*__spec\\.tsx$',
+  testRegex: 'src/.*__spec\\.(jsx?|tsx?)$',
   snapshotSerializers: [require.resolve('enzyme-to-json/serializer')],
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
 };
