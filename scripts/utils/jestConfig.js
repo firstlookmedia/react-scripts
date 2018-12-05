@@ -1,5 +1,4 @@
 const path = require('path');
-const babelOptions = require('./babelTransform');
 
 module.exports = {
   rootDir: process.cwd(),
@@ -23,12 +22,4 @@ module.exports = {
   testRegex: 'src/.*__spec\\.(jsx?|tsx?)$',
   snapshotSerializers: [require.resolve('enzyme-to-json/serializer')],
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
-  globals: {
-    'ts-jest': {
-      babelConfig: {
-        presets: ['env', 'react'],
-        plugins: ['require-context-hook'],
-      },
-    },
-  },
 };
