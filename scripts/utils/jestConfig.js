@@ -25,7 +25,7 @@ module.exports = {
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
   globals: {
     'ts-jest': {
-      babelConfig: path.resolve(__dirname, 'babelTransform.js'),
+      babelConfig: path.resolve(__dirname, 'tsJestBabelTransform.js'),
     },
   },
 };
