@@ -1,4 +1,5 @@
 const babelOptions = {
+  presets: ['env', 'react'],
   plugins: ['require-context-hook'],
 };
 
