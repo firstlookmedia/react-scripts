@@ -5,4 +5,9 @@ module.exports = babelJest.createTransformer({
   passPerPreset: true,
   presets: ['babel-preset-react', 'babel-preset-env', 'babel-preset-stage-0'].map(require.resolve),
   plugins: ['babel-plugin-transform-runtime'].map(require.resolve),
+  env: {
+    test: {
+      plugins: ['babel-plugin-require-context-hook'].map(require.resolve),
+    },
+  },
 });
