@@ -14,7 +14,6 @@ module.exports = {
     '^react-relay$': path.resolve(__dirname, '__mocks__/react-relay.js'),
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  testEnvironment: 'jsdom',
   transform: {
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
     '^.+\\.(ts|tsx)$': 'ts-jest',
