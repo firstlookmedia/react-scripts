@@ -16,11 +16,19 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
-    '^.+\\.(ts|tsx)$': path.resolve(__dirname, 'tsJestBabelTransform.js'),
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
 
   collectCoverageFrom: ['src/**/*.tsx', '!src/**/*.stories.tsx'],
   testRegex: 'src/.*__spec\\.(jsx?|tsx?)$',
   snapshotSerializers: [require.resolve('enzyme-to-json/serializer')],
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
+  globals: {
+    'ts-jest': {
+      babelConfig: {
+        presets: ['env', 'react'],
+        plugins: ['require-context-hook'],
+      },
+    },
+  },
 };
