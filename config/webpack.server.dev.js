@@ -8,10 +8,10 @@ module.exports = Object.assign({}, defaults, {
   entry: ['webpack/hot/poll?1000'].concat(defaults.entry),
   watch: true,
   externals: [nodeExternals({
-    whitelist: ['webpack/hot/poll?1000'],
+    whitelist: ['webpack/hot/poll?1000', /\.css$/],
   })],
   plugins: defaults.plugins.concat(
     new StartServerPlugin('server.js'),
     new webpack.HotModuleReplacementPlugin(),
-  )
+  ),
 });

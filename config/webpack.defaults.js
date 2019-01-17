@@ -65,6 +65,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: path.resolve('src'),
         use: [
           {
             loader: 'css-loader',
@@ -76,6 +77,18 @@ module.exports = {
               sourceMap: true,
               ident: 'postcss',
               plugins: [autoprefixer(), postcssCalc(), precss()],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: path.resolve('node_modules'),
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: false,
             },
           },
         ],
