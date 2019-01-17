@@ -1,11 +1,17 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const path = require('path');
 const defaults = require('./webpack.defaults');
 
 const config = merge.smart({
   module: {
     rules: [{
       test: /\.css$/,
+      include: path.resolve('src'),
+      use: ['style-loader'],
+    }, {
+      test: /\.css$/,
+      include: path.resolve('node_modules'),
       use: ['style-loader'],
     }, {
       test: /\.scss$/,

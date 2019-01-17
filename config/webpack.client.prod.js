@@ -4,12 +4,18 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const merge = require('webpack-merge');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const path = require('path');
 const defaults = require('./webpack.defaults');
 
 const config = merge.smart({
   module: {
     rules: [{
       test: /\.css$/,
+      include: path.resolve('src'),
+      use: [MiniCSSExtractPlugin.loader],
+    }, {
+      test: /\.css$/,
+      include: path.resolve('node_modules'),
       use: [MiniCSSExtractPlugin.loader],
     }, {
       test: /\.scss$/,
