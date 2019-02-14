@@ -19,6 +19,7 @@ module.exports = {
   },
 
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/stories.{js,jsx,ts,tsx}'],
+  coveragePathIgnorePatterns: ['/node_modules/', '<rootDir>/src/.*__generated__/', '<rootDir>/src/assets/'],
   testRegex: 'src/.*__spec\\.(jsx?|tsx?)$',
   snapshotSerializers: [require.resolve('enzyme-to-json/serializer')],
   setupFiles: [path.resolve(__dirname, 'testSetup.js')],
