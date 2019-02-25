@@ -7,6 +7,10 @@
   "bin": {
     "react-scripts": "./bin/react-scripts.js"
   },
+  "engines": {
+    "node": "^6.0.0",
+    "yarn": "^1.6.0"
+  },
   "dependencies": {
     "autoprefixer": "^8",
     "aws-sdk": "^2.94.0",
