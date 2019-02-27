@@ -33,5 +33,5 @@ module.exports = [
   '--artifactDirectory',
   'src/__generated__',
 
-  process.env.PERSIST_QUERIES ? '--persist' : '',
+  process.env.PERSIST_QUERIES ? '--persist --persist-output' : '',
 ].reduce((acc, item) => acc.concat(item), []);
