@@ -33,5 +33,10 @@ module.exports = [
   '--artifactDirectory',
   'src/__generated__',
 
-  process.env.PERSIST_QUERIES ? '--persist --persist-output' : '',
+  // FIXME: relay fork persist queries flag, remove when no projects use the fork
+  process.env.PERSIST_QUERIES ? '--persist' : '',
+
+  // relay v2+ persist queries flag
+  process.env.PERSIST_QUERIES ? '--persist-output' : '',
+  process.env.PERSIST_QUERIES ? './complete.queryMap.json' : '',
 ].reduce((acc, item) => acc.concat(item), []);
