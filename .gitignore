@@ -6,3 +6,4 @@ template/schema.graphql
 yarn-error.log
 .watchmanconfig
 .tern-port
+complete.queryMap.json
