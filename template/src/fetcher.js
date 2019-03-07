@@ -1,6 +1,6 @@
-import 'isomorphic-fetch';
-import envConfig from 'env-config';
-import qs from 'qs';
+import "isomorphic-fetch";
+import envConfig from "env-config";
+import qs from "qs";
 
 // TODO: Update this when someone releases a real, production-quality solution
 // for handling universal rendering with Relay Modern. For now, this is just
@@ -16,20 +16,20 @@ class FetcherBase {
     const queryParams = qs.stringify(variables, { sort: (a, b) => a.localeCompare(b) });
     const staticQueryUrl = `${this.url}/${operation.id}?${queryParams}`;
     const response = await fetch(staticQueryUrl, {
-      method: 'GET',
-      credentials: 'same-origin',
+      method: "GET",
+      credentials: "same-origin",
     });
     return response;
   }
 
   async post(operation, variables) {
     const response = await fetch(this.url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ query: operation.text, variables }),
-      credentials: 'same-origin',
+      credentials: "same-origin",
     });
     return response;
   }
@@ -46,7 +46,7 @@ class FetcherBase {
 
 export class ServerFetcher extends FetcherBase {
   constructor(url) {
-    const isStaticQueries = process.env.PERSIST_QUERIES;
+    const isStaticQueries = process.env.PERSIST_QUERIES === "true";
     super(url, isStaticQueries);
 
     this.payloads = [];
@@ -67,7 +67,7 @@ export class ServerFetcher extends FetcherBase {
 
 export class ClientFetcher extends FetcherBase {
   constructor(url, payloads) {
-    const isStaticQueries = envConfig.PERSIST_QUERIES;
+    const isStaticQueries = envConfig.PERSIST_QUERIES === "true";
     super(url, isStaticQueries);
 
     this.payloads = payloads;

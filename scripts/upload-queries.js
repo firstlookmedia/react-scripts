@@ -7,6 +7,7 @@ const mime = require('mime');
 
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 const queriesBucket = process.env.QUERIES_S3_BUCKET;
+const persist = process.env.PERSIST_QUERIES === 'true';
 const uploadParams = {
   Bucket: queriesBucket,
   Key: '',
@@ -17,12 +18,19 @@ const uploadParams = {
 };
 const baseDir = './build/queries';
 
+if (!persist) {
+  console.error('Persist queries turned off. exiting...');
+  process.exit(0);
+}
+
 if (!queriesBucket) {
   console.error('QUERIES_S3_BUCKET is empty. Exiting.');
   process.exit(1);
 }
 
 fs.readdir(baseDir, (err, files) => {
+  if (!files || files.length < 1) return;
+
   files.forEach((file) => {
     const fileStream = fs.createReadStream(path.join(baseDir, file));
     fileStream.on('error', (err) => {
