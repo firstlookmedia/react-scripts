@@ -61,9 +61,9 @@ To install on OSX `brew bundle` in this directory.
 
 To enable persisted queries:
 
-1. add `PERSIST_QUERIES: "true"` to all build circle configs, or to the circle config global environment variable list
-2. add `QUERIES_S3_BUCKET` property to all build and deploy circle configs and point it to the s3 bucket where the site's queries live. The global default variable here may point to the dev bucket, in which case you only need to override staging and prod.
-3. upgrade to the newest version of React scripts that has the `get` and `post` fetcher methods
-4. upgrade to relay >= 3.0
+1. Add `PERSIST_QUERIES: "true"` in the build and runtime environments
+2. Point `QUERIES_S3_BUCKET` to an s3 bucket during build time to deploy queries, making them accessible to the graphql backend
+3. Upgrade to the newest version of React scripts that has the `GET` and `POST` fetcher methods
+4. Upgrade to relay >= 3.0
 
 Note: persisted queries are always turned off during local development.
