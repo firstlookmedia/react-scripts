@@ -59,16 +59,11 @@ To install on OSX `brew bundle` in this directory.
 
 ## Persisted queries
 
-By default, sites will not persist static queries. To enable persisted queries:
+To enable persisted queries:
 
-1. add `PERSIST_QUERIES: "true"` to all build circle configs
-2. add `QUERIES_S3_BUCKET` property to all build and deploy circle configs and point it to the s3 bucket where the site's queries live
+1. add `PERSIST_QUERIES: "true"` to all build circle configs, or to the circle config global environment variable list
+2. add `QUERIES_S3_BUCKET` property to all build and deploy circle configs and point it to the s3 bucket where the site's queries live. The global default variable here may point to the dev bucket, in which case you only need to override staging and prod.
 3. upgrade to the newest version of React scripts that has the `get` and `post` fetcher methods
-4. install our forked version of relay compiler: https://github.com/firstlookmedia/relay contains the .tar.gz of the compiler and you refer to it like so in the `package.json`: https://github.com/firstlookmedia/relay/releases/download/v1.5.0-flm.1/relay-compiler-1.5.0-flm.1.tar.gz
+4. upgrade to relay >= 3.0
 
 Note: persisted queries are always turned off during local development.
-
-### relay compiler
-
-We are using a forked version of relay similar to what the artsy folks are doing. Hopefully, this fork will get merged into relay proper, at which point we won't need to do anything special to get persisted static queries to work. Until then, we will need to stick to relay version `1.5.0` and if we do need to upgrade we'll have to update our fork, rebuild the compiler, and release it. The artsy folks and others have done an excellent job of keeping this fork up to date with subsequent relay releases, so this should not pose much a problem. In fact, it would be great for us to help with merging upstream relay releases into the PR version on the relay repository if necessary.
-
