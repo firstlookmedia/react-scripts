@@ -19,7 +19,7 @@ const uploadParams = {
 const baseDir = './build/queries';
 
 if (!persist) {
-  console.error('Persist queries turned off. exiting...');
+  console.error('Persist queries turned off. Exiting.');
   process.exit(0);
 }
 
