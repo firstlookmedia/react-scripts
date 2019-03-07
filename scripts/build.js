@@ -1,4 +1,3 @@
-
 process.env.NODE_ENV = 'production';
 
 const webpack = require('webpack');
@@ -70,7 +69,7 @@ relayCompiler.on('close', (code) => {
     console.log();
     console.log('Building server files...');
     webpack(serverConfig).run(handler.bind(null, serverConfig));
-    if (process.env.PERSIST_QUERIES) {
+    if (process.env.PERSIST_QUERIES === 'true') {
       buildPersistedQueries();
     }
   });

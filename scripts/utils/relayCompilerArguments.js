@@ -34,9 +34,9 @@ module.exports = [
   'src/__generated__',
 
   // FIXME: relay fork persist queries flag, remove when no projects use the fork
-  process.env.PERSIST_QUERIES ? '--persist' : '',
+  process.env.PERSIST_QUERIES === 'true' ? '--persist' : '',
 
   // relay v2+ persist queries flag
-  process.env.PERSIST_QUERIES ? '--persist-output' : '',
-  process.env.PERSIST_QUERIES ? './complete.queryMap.json' : '',
+  process.env.PERSIST_QUERIES === 'true' ? '--persist-output' : '',
+  process.env.PERSIST_QUERIES === 'true' ? './complete.queryMap.json' : '',
 ].reduce((acc, item) => acc.concat(item), []);
