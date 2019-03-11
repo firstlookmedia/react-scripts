@@ -39,7 +39,9 @@ fs.readdir(baseDir, (err, files) => {
     uploadParams.Body = fileStream;
     // FIXME: remove STATIC_QUERY_SUFFIX when the following is resolved:
     // https://github.com/facebook/relay/pull/2641
-    uploadParams.Key = `queries/${file}${process.env.STATIC_QUERY_SUFFIX}`;
+    const hash = file.substring(0, file.length - 10);
+    const queryFile = `${hash}${process.env.STATIC_QUERY_SUFFIX || ''}.query.txt`;
+    uploadParams.Key = `queries/${queryFile}`;
 
     // Sets Content-Type header and in Metadata
     const type = mime.getType(file);
