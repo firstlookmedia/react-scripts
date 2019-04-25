@@ -14,17 +14,45 @@ const cssOptions = {
 
 const babelOptions = {
   passPerPreset: true,
-  presets: ['babel-preset-react', 'babel-preset-env', 'babel-preset-stage-0'],
-  plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
+  presets: ['@babel/preset-react', '@babel/preset-env'],
+  plugins: [
+    '@loadable/babel-plugin',
+
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        corejs: 2,
+      },
+    ],
+    'react-hot-loader/babel',
+    [
+      'relay',
+      {
+        artifactDirectory: 'src/__generated__',
+        schema: 'schema.graphql',
+      },
+    ],
+    '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-syntax-import-meta',
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-proposal-json-strings',
+    [
+      '@babel/plugin-proposal-decorators',
+      {
+        legacy: true,
+      },
+    ],
+    '@babel/plugin-proposal-function-sent',
+    '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-proposal-numeric-separator',
+    '@babel/plugin-proposal-throw-expressions',
+  ],
 };
 
 module.exports = {
   mode: 'development',
   context: __dirname,
-  entry: [
-    'babel-polyfill',
-    path.resolve(packageConfig.clientEntry || 'src/index.js'),
-  ],
+  entry: ['@babel/polyfill', path.resolve(packageConfig.clientEntry || 'src/index.js')],
   output: {
     filename: '[name].js',
     path: path.resolve('build/assets'),
