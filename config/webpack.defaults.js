@@ -52,7 +52,7 @@ const babelOptions = {
 module.exports = {
   mode: 'development',
   context: __dirname,
-  entry: ['@babel/polyfill', path.resolve(packageConfig.clientEntry || 'src/index.js')],
+  entry: [path.resolve(packageConfig.clientEntry || 'src/index.js')],
   output: {
     filename: '[name].js',
     path: path.resolve('build/assets'),
