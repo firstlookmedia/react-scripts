@@ -12,6 +12,7 @@
     "yarn": "^1.6.0"
   },
   "dependencies": {
+    "@loadable/webpack-plugin": "^5.7.1",
     "autoprefixer": "^8",
     "aws-sdk": "^2.94.0",
     "babel-cli": "^6",
