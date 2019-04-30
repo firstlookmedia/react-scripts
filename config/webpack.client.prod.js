@@ -45,7 +45,11 @@ const config = merge.smart(
       new MiniCSSExtractPlugin({
         filename: '[contenthash].css',
       }),
-      new OptimizeCSSAssetsPlugin({}),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          reduceIdents: false,
+        },
+      }),
       new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
     ],
   },
