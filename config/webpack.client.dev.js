@@ -31,7 +31,7 @@ const config = merge.smart(
     entry: ['webpack-hot-middleware/client'],
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
+      new LoadablePlugin({ filename: 'stats.json' }),
     ],
   },
 );
