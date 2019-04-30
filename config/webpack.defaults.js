@@ -1,6 +1,4 @@
 const path = require('path');
-const LoadablePlugin = require('@loadable/webpack-plugin');
-
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
 const postcssCalc = require('postcss-calc');
@@ -60,7 +58,7 @@ module.exports = {
     path: path.resolve('build/assets'),
     publicPath: '/assets/',
   },
-  plugins: [new LoadablePlugin({ filename: 'stats.json', writeToDisk: true })],
+  plugins: [],
   resolve: {
     modules: ['node_modules'],
     extensions: ['.ts', '.tsx', '.js'],

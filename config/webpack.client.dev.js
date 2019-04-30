@@ -30,8 +30,8 @@ const config = merge.smart(
     devtool: 'eval-source-map',
     entry: ['webpack-hot-middleware/client'],
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
       new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
+      new webpack.HotModuleReplacementPlugin(),
     ],
   },
 );
