@@ -11,7 +11,7 @@ module.exports = Object.assign({}, defaults, {
     whitelist: ['webpack/hot/poll?1000', /\.css$/],
   })],
   plugins: defaults.plugins.concat(
-    new StartServerPlugin('server.js'),
     new webpack.HotModuleReplacementPlugin(),
+    new StartServerPlugin('server.js'),
   ),
 });
