@@ -36,6 +36,7 @@ const config = merge.smart(
       filename: '[hash].js',
     },
     plugins: [
+      new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
       new ManifestPlugin({ fileName: 'manifest.json' }),
       new ManifestPlugin({ fileName: `manifest.${Date.now()}.json` }),
       new webpack.DefinePlugin({
@@ -50,7 +51,6 @@ const config = merge.smart(
           reduceIdents: false,
         },
       }),
-      new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
     ],
   },
 );
