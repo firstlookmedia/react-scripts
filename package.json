@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "babel-plugin-relay": "^1.4.1",
+    "babel-plugin-relay": "^4.0.0",
     "core-js": "^2.4.1",
     "eslint": "^4",
     "eslint-config-airbnb-base": "^12",
