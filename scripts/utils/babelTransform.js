@@ -5,9 +5,15 @@ module.exports = babelJest.createTransformer({
   passPerPreset: true,
   presets: ['@babel/preset-react', '@babel/preset-env'].map(require.resolve),
   plugins: [
-    '@babel/plugin-transform-runtime',
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        corejs: 2,
+      },
+    ],
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-meta',
+    '@babel/plugin-proposal-decorators',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-json-strings',
     '@babel/plugin-proposal-function-sent',
