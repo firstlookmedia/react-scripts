@@ -33,7 +33,7 @@ const config = merge.smart(
   {
     mode: 'production',
     output: {
-      filename: '[chunkhash:8].js',
+      filename: '[hash].js',
     },
     plugins: [
       new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
@@ -43,7 +43,9 @@ const config = merge.smart(
         'process.env.NODE_ENV': '"production"',
       }),
       new ProgressBarPlugin(),
-      new MiniCSSExtractPlugin(),
+      new MiniCSSExtractPlugin({
+        filename: '[contenthash].css',
+      }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           reduceIdents: false,
