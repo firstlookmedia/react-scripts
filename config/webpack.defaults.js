@@ -17,7 +17,6 @@ const babelOptions = {
   presets: ['@babel/preset-react', '@babel/preset-env'],
   plugins: [
     '@loadable/babel-plugin',
-
     [
       '@babel/plugin-transform-runtime',
       {

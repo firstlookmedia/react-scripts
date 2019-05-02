@@ -33,7 +33,7 @@ const config = merge.smart(
   {
     mode: 'production',
     output: {
-      filename: '[name]-bundle-[chunkhash:8].js',
+      filename: '[chunkhash:8].js',
     },
     plugins: [
       new LoadablePlugin({ filename: 'stats.json', writeToDisk: true }),
