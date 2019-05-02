@@ -377,7 +377,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-syntax-dynamic-import@^7.0.0":
+"@babel/plugin-syntax-dynamic-import@^7.0.0", "@babel/plugin-syntax-dynamic-import@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.2.0.tgz#69c159ffaf4998122161ad8ebc5e6d1f55df8612"
   integrity sha512-mVxuJ0YroI/h/tbFTPGZR8cv6ai+STMKNBq0f8hFxsxWjl94qqhsb+wXbpNMDPU3cfR1TIsVFzU3nXyZMqyK4w==
@@ -853,6 +853,13 @@
     esutils "^2.0.2"
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
+
+"@loadable/babel-plugin@^5.8.0":
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.8.0.tgz#fe6672ebeaea0c428d32e3f3927ed9f727e2b61b"
+  integrity sha512-GxcuhjO+d5ZLDSoqThrAe8gtlGN9Gd55CGGz8xX52B3xV6QXv0D+yQsdTFr8yVw/85sJ0AQ4sKAxAmqL4OqYkw==
+  dependencies:
+    "@babel/plugin-syntax-dynamic-import" "^7.2.0"
 
 "@loadable/webpack-plugin@^5.7.1":
   version "5.7.1"
