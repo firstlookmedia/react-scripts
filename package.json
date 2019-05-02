@@ -34,6 +34,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
+    "babel-plugin-relay": "^4.0.0",
     "chalk": "^2",
     "concat-stream": "^1.6.2",
     "cross-spawn": "^6",
@@ -89,8 +90,6 @@
     "source-map-support": "^0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-plugin-relay": "^4.0.0",
     "core-js": "^2.4.1",
     "eslint": "^4",
     "eslint-config-airbnb-base": "^12",
