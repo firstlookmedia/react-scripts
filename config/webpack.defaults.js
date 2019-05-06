@@ -33,7 +33,7 @@ const babelOptions = {
     ],
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-meta',
-    '@babel/plugin-proposal-decorators',
+    ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true }],
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-json-strings',
     '@babel/plugin-proposal-function-sent',
