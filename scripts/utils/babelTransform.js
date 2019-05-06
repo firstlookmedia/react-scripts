@@ -13,7 +13,6 @@ module.exports = babelJest.createTransformer({
     ],
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-meta',
-    '@babel/plugin-proposal-decorators',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-json-strings',
     '@babel/plugin-proposal-function-sent',
@@ -22,5 +21,8 @@ module.exports = babelJest.createTransformer({
     '@babel/plugin-proposal-throw-expressions',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
-  ].map(require.resolve),
+  ].map(plugin =>
+    (Array.isArray(plugin)
+      ? require.resolve(plugin[0], plugin[1])
+      : require.resolve(plugin))),
 });
