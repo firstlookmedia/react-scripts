@@ -1,6 +1,6 @@
 {
   "name": "@firstlookmedia/react-scripts",
-  "version": "2.0.0-rc15",
+  "version": "2.0.0-rc16",
   "description": "shared react site configs",
   "author": "First Look Media",
   "license": "MIT",
@@ -15,7 +15,6 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-decorators": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
     "@babel/plugin-proposal-function-sent": "^7.0.0",
     "@babel/plugin-proposal-json-strings": "^7.0.0",
