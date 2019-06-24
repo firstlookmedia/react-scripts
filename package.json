@@ -1,6 +1,6 @@
 {
   "name": "@firstlookmedia/react-scripts",
-  "version": "2.0.0-rc16",
+  "version": "2.0.0-rc17",
   "description": "shared react site configs",
   "author": "First Look Media",
   "license": "MIT",
@@ -66,7 +66,7 @@
     "postcss-scss": "^1.0.5",
     "precss": "^2",
     "progress-bar-webpack-plugin": "^1.11.0",
-    "react-hot-loader": "^4.1.1",
+    "react-hot-loader": "^4.11.0",
     "resolve-bin": "^0.4.0",
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^7.0.1",
