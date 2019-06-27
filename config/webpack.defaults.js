@@ -27,6 +27,7 @@ const babelOptions = {
     [
       'relay',
       {
+        compat: packageConfig.relayCompatMode || false,
         artifactDirectory: 'src/__generated__',
         schema: 'schema.graphql',
       },
