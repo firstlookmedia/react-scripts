@@ -4,8 +4,9 @@ global.requestAnimationFrame = (callback) => {
 
 const observeMock = () => null;
 global.IntersectionObserver = () => observeMock;
-global.IntersectionObserverEntry = {};
-global.intersectionObserverEntry.prototype.intersectionRatio = {};
+global.IntersectionObserverEntry = {
+  prototype: { intersectionRatio: {} },
+};
 
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
