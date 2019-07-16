@@ -2,6 +2,9 @@ global.requestAnimationFrame = (callback) => {
   setTimeout(callback, 0);
 };
 
+const observeMock = () => null;
+global.IntersectionObserver = () => observeMock;
+
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
