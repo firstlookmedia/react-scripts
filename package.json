@@ -73,7 +73,6 @@
     "sass-loader": "^7.0.1",
     "start-server-webpack-plugin": "^2.2.5",
     "style-loader": "^0.21",
-    "ts-jest": "23.0.0",
     "ts-loader": "^5.2.1",
     "url-loader": "^1",
     "webpack": "^4",
