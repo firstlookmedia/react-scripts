@@ -15,7 +15,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   transform: {
     '\\.js$': path.resolve(__dirname, 'babelTransform.js'),
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(ts|tsx)$': path.resolve(__dirname, 'babelTransform.js'),
   },
 
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/stories.{js,jsx,ts,tsx}'],
