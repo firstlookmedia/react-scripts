@@ -5,7 +5,7 @@ global.requestAnimationFrame = (callback) => {
 const observeMock = () => null;
 global.IntersectionObserver = function IntersectionObserver() {
   return {
-    observeMock,
+    observe: observeMock,
   };
 };
 global.IntersectionObserverEntry = {
