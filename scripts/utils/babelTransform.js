@@ -3,8 +3,15 @@ const config = require('../../config/webpack.defaults.js');
 
 module.exports = babelJest.createTransformer({
   passPerPreset: true,
-  presets: ['@babel/preset-react', '@babel/preset-env'].map(require.resolve),
+  presets: ['@babel/preset-typescript', '@babel/preset-react', '@babel/preset-env'].map(require.resolve),
   plugins: [
+    [
+      'babel-plugin-relay',
+      {
+        artifactDirectory: 'src/__generated__',
+        schema: 'schema.graphql',
+      },
+    ],
     [
       '@babel/plugin-transform-runtime',
       {
