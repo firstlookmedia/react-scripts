@@ -91,6 +91,7 @@
     "source-map-support": "^0.5"
   },
   "devDependencies": {
+    "babel-plugin-macros": "^2.6.1",
     "core-js": "^2.4.1",
     "eslint": "^4",
     "eslint-config-airbnb-base": "^12",
