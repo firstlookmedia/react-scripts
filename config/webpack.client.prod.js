@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const defaults = require('./webpack.defaults');
+const babelOptions = require('./babelOptions');
 
 const config = merge.smart(
   {
@@ -32,7 +33,7 @@ const config = merge.smart(
           use: [
             {
               loader: 'babel-loader',
-              options: defaults.babelOptions,
+              options: babelOptions,
             },
             {
               loader: 'ts-loader',
