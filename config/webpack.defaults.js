@@ -14,7 +14,7 @@ const cssOptions = {
 
 const babelOptions = {
   passPerPreset: true,
-  presets: ['@babel/preset-react'],
+  presets: ['@babel/preset-typescript', '@babel/preset-react'],
   plugins: [
     '@loadable/babel-plugin',
     [
@@ -71,9 +71,6 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: babelOptions,
-          },
-          {
-            loader: 'ts-loader',
           },
         ],
       },

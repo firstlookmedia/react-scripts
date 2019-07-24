@@ -26,6 +26,15 @@ const config = merge.smart(
           test: /\.scss$/,
           use: [MiniCSSExtractPlugin.loader],
         },
+        {
+          test: /\.tsx*$/,
+          include: [path.resolve('src')],
+          use: [
+            {
+              loader: 'ts-loader',
+            },
+          ],
+        },
       ],
     },
   },
