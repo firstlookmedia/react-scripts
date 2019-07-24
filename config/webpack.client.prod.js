@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const defaults = require('./webpack.defaults');
+const babelOptions = require('./babelOptions');
 
 const config = merge.smart(
   {
@@ -25,6 +26,19 @@ const config = merge.smart(
         {
           test: /\.scss$/,
           use: [MiniCSSExtractPlugin.loader],
+        },
+        {
+          test: /\.tsx*$/,
+          include: [path.resolve('src')],
+          use: [
+            {
+              loader: 'babel-loader',
+              options: babelOptions,
+            },
+            {
+              loader: 'ts-loader',
+            },
+          ],
         },
       ],
     },

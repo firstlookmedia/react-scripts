@@ -3,16 +3,17 @@
   "presets": ["@babel/preset-typescript", "@babel/preset-react", "@babel/preset-env"],
   "plugins": [
     [
+      "@babel/plugin-transform-runtime",
+      {
+        "corejs": 2
+      }
+    ],
+    "macros",
+    [
       "babel-plugin-relay",
       {
         "artifactDirectory": "src/__generated__",
         "schema": "schema.graphql"
-      }
-    ],
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "corejs": 2
       }
     ],
     "@babel/plugin-syntax-dynamic-import",
