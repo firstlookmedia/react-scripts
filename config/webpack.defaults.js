@@ -14,7 +14,7 @@ const cssOptions = {
 
 const babelOptions = {
   passPerPreset: true,
-  presets: ['@babel/preset-react', '@babel/preset-env'],
+  presets: ['@babel/preset-react'],
   plugins: [
     '@loadable/babel-plugin',
     [
