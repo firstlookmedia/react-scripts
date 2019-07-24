@@ -46,6 +46,7 @@ const babelOptions = {
 };
 
 module.exports = {
+  babelOptions,
   mode: 'development',
   context: __dirname,
   entry: [path.resolve(packageConfig.clientEntry || 'src/index.js')],

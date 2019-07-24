@@ -31,6 +31,10 @@ const config = merge.smart(
           include: [path.resolve('src')],
           use: [
             {
+              loader: 'babel-loader',
+              options: defaults.babelOptions,
+            },
+            {
               loader: 'ts-loader',
             },
           ],
