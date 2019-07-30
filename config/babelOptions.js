@@ -4,13 +4,13 @@ const babelOptions = {
   passPerPreset: true,
   presets: ['@babel/env', '@babel/typescript', '@babel/react'],
   plugins: [
-    '@loadable/babel-plugin',
     [
       '@babel/plugin-transform-runtime',
       {
-        corejs: 2,
+        corejs: 3,
       },
     ],
+    '@loadable/babel-plugin',
     'react-hot-loader/babel',
     [
       'relay',

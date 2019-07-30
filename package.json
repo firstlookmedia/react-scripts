@@ -41,7 +41,7 @@
     "babel-plugin-relay": "^5.0.0",
     "chalk": "^2",
     "concat-stream": "^1.6.2",
-    "core-js": "2",
+    "core-js": "3",
     "cross-spawn": "^6",
     "css-loader": "^2",
     "enzyme": "^3",
