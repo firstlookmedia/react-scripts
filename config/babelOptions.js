@@ -8,6 +8,7 @@ const babelOptions = {
       {
         useBuiltIns: 'usage',
         modules: false,
+        corejs: 2,
         // Exclude transforms that make all code slower
         exclude: ['transform-typeof-symbol'],
       },
