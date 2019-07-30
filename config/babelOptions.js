@@ -2,15 +2,9 @@ const packageConfig = require('./packageConfig');
 
 const babelOptions = {
   passPerPreset: true,
-  presets: ['@babel/preset-typescript', '@babel/preset-react'],
+  presets: ['@babel/env', '@babel/typescript', '@babel/react'],
   plugins: [
     '@loadable/babel-plugin',
-    [
-      '@babel/plugin-transform-runtime',
-      {
-        corejs: 2,
-      },
-    ],
     'react-hot-loader/babel',
     [
       'relay',
@@ -21,7 +15,6 @@ const babelOptions = {
       },
     ],
     '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-transform-arrow-functions',
     '@babel/plugin-syntax-import-meta',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-json-strings',
