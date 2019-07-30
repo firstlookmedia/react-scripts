@@ -4,13 +4,11 @@ const babelOptions = {
   passPerPreset: true,
   presets: [
     [
-      [
-        '@babel/preset-env',
-        {
-          useBuiltIns: 'usage', // or "entry"
-          corejs: 3,
-        },
-      ],
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage', // or "entry"
+        corejs: 3,
+      },
     ],
     '@babel/typescript',
     '@babel/react',
