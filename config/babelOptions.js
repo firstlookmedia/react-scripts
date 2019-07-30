@@ -4,19 +4,24 @@ const babelOptions = {
   passPerPreset: true,
   presets: [
     [
-      '@babel/env',
-      {
-        useBuiltIns: 'usage',
-        modules: false,
-        corejs: 2,
-        // Exclude transforms that make all code slower
-        exclude: ['transform-typeof-symbol'],
-      },
+      [
+        '@babel/preset-env',
+        {
+          useBuiltIns: 'usage', // or "entry"
+          corejs: 3,
+        },
+      ],
     ],
     '@babel/typescript',
     '@babel/react',
   ],
   plugins: [
+    [
+      '@babel/transform-runtime',
+      {
+        corejs: 3,
+      },
+    ],
     '@loadable/babel-plugin',
     'react-hot-loader/babel',
     [
