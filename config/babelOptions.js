@@ -21,6 +21,7 @@ const babelOptions = {
       },
     ],
     '@babel/plugin-syntax-dynamic-import',
+    '@babel/plugin-transform-arrow-functions',
     '@babel/plugin-syntax-import-meta',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-json-strings',
