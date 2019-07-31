@@ -62,6 +62,9 @@ const config = merge.smart(
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
+          map: {
+            inline: false,
+          },
           reduceIdents: false,
         },
       }),
