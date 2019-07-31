@@ -2,7 +2,17 @@ const packageConfig = require('./packageConfig');
 
 const babelOptions = {
   passPerPreset: true,
-  presets: ['@babel/preset-env', '@babel/typescript', '@babel/react'],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'entry',
+        corejs: 3,
+      },
+    ],
+    '@babel/typescript',
+    '@babel/react',
+  ],
   plugins: [
     [
       '@babel/transform-runtime',
