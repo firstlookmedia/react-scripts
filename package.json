@@ -1,6 +1,6 @@
 {
   "name": "@firstlookmedia/react-scripts",
-  "version": "2.0.0-rc24",
+  "version": "2.0.0-rc25",
   "description": "shared react site configs",
   "author": "First Look Media",
   "license": "MIT",
@@ -63,7 +63,7 @@
     "mime": "^2.0.3",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.9.0",
-    "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-calc": "^5.3.1",
     "postcss-loader": "^2",
     "postcss-scss": "^1.0.5",
