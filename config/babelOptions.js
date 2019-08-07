@@ -1,5 +1,9 @@
 const packageConfig = require('./packageConfig');
 
+const useReactHotLoader = typeof packageConfig.useReactHotLoader !== 'undefined'
+                        ? packageConfig.useReactHotLoader
+                        : true;
+
 const babelOptions = {
   passPerPreset: true,
   presets: [
@@ -21,7 +25,7 @@ const babelOptions = {
       },
     ],
     '@loadable/babel-plugin',
-    'react-hot-loader/babel',
+    useReactHotLoader && 'react-hot-loader/babel',
     [
       'relay',
       {
@@ -40,7 +44,7 @@ const babelOptions = {
     '@babel/plugin-proposal-throw-expressions',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
-  ],
+  ].filter(Boolean),
 };
 
 module.exports = babelOptions;
