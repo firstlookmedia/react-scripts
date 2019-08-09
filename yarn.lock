@@ -922,7 +922,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.0.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.4.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
   integrity sha512-28QvEGyQyNkB0/m2B4FU7IEZGK2NUrcMtT6BZEFALTguLk+AUT6ofsHtPk5QyjAdUkpMJ+/Em+quwz4HOt30AQ==
@@ -2612,6 +2612,11 @@ commander@~2.8.1:
   integrity sha1-Br42f+v9oMMwqh4qBy09yXYkJdQ=
   dependencies:
     graceful-readlink ">= 1.0.0"
+
+common-prefix@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/common-prefix/-/common-prefix-1.1.0.tgz#e3a5ea7fafaefc7eb84e760523e1afb985f90f00"
+  integrity sha1-46Xqf6+u/H64TnYFI+GvuYX5DwA=
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -6559,6 +6564,13 @@ make-dir@^2.0.0:
     pify "^4.0.1"
     semver "^5.6.0"
 
+make-plural@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/make-plural/-/make-plural-4.3.0.tgz#f23de08efdb0cac2e0c9ba9f315b0dff6b4c2735"
+  integrity sha512-xTYd4JVHpSCW+aqDof6w/MebaMVNTVYBZhbB/vi513xXdiPT92JMVCo0Jq8W2UZnzYRFeVbQiQ+I25l13JuKvA==
+  optionalDependencies:
+    minimist "^1.2.0"
+
 makeerror@1.0.x:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/makeerror/-/makeerror-1.0.11.tgz#e01a5c9109f2af79660e4e8b9587790184f5a96c"
@@ -6674,6 +6686,42 @@ merge@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.1.tgz#38bebf80c3220a8a487b6fcfb3941bb11720c145"
   integrity sha512-VjFo4P5Whtj4vsLzsYBu5ayHhoHJ0UqNm7ibvShmbmoz7tGi0vXaoJbGdB+GmDMLUdg8DpQXEIeVDAe8MaABvQ==
+
+messageformat-convert@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/messageformat-convert/-/messageformat-convert-0.3.1.tgz#03b5453ee87e66da6eef1670ce0caf997ee64e51"
+  integrity sha512-fpNfsvFNj5VCAMN0Hpu9D4zhnGkEHL3cILJBAOydkzzdyrSoFlYIHAPRWRajOcHDgYXt+g0NIEzq0bfW3sd5Bw==
+  dependencies:
+    common-prefix "1.1.0"
+    make-plural "^4.3.0"
+
+messageformat-formatters@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/messageformat-formatters/-/messageformat-formatters-2.0.1.tgz#0492c1402a48775f751c9b17c0354e92be012b08"
+  integrity sha512-E/lQRXhtHwGuiQjI7qxkLp8AHbMD5r2217XNe/SREbBlSawe0lOqsFb7rflZJmlQFSULNLIqlcjjsCPlB3m3Mg==
+
+messageformat-loader@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/messageformat-loader/-/messageformat-loader-0.8.1.tgz#709a8f38e36257b19a9492dbfdbc743c03351fa0"
+  integrity sha512-hk721fJttjqoIfW6cMcLjFPsJ7C2bL9lj7Jy2btfWf7zsu6gWlLFeTKIUfi7S1v4U1gP4dkzHa1giYsAwD+aVA==
+  dependencies:
+    loader-utils "^1.2.3"
+    messageformat-convert "^0.3.1"
+    yaml "^1.6.0"
+
+messageformat-parser@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/messageformat-parser/-/messageformat-parser-4.1.2.tgz#fd34ec39912a14868a1595eaeb742485ab8ab372"
+  integrity sha512-7dWuifeyldz7vhEuL96Kwq1fhZXBW+TUfbnHN4UCrCxoXQTYjHnR78eI66Gk9LaLLsAvzPNVJBaa66DRfFNaiA==
+
+messageformat@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/messageformat/-/messageformat-2.3.0.tgz#de263c49029d5eae65d7ee25e0754f57f425ad91"
+  integrity sha512-uTzvsv0lTeQxYI2y1NPa1lItL5VRI8Gb93Y2K2ue5gBPyrbJxfDi/EYWxh2PKv5yO42AJeeqblS9MJSh/IEk4w==
+  dependencies:
+    make-plural "^4.3.0"
+    messageformat-formatters "^2.0.1"
+    messageformat-parser "^4.1.2"
 
 methods@~1.1.2:
   version "1.1.2"
@@ -10704,6 +10752,13 @@ yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.3.tgz#b4b049e314be545e3ce802236d6cd22cd91c3de9"
   integrity sha512-S+Zk8DEWE6oKpV+vI3qWkaK+jSbIK86pCwe2IF/xwIpQ8jEuxpw9NyaGjmp9+BoJv5FV2piqCDcoCtStppiq2A==
+
+yaml@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.6.0.tgz#d8a985cfb26086dd73f91c637f6e6bc909fddd3c"
+  integrity sha512-iZfse3lwrJRoSlfs/9KQ9iIXxs9++RvBFVzAqbbBiFT+giYtyanevreF9r61ZTbGMgWQBxAua3FzJiniiJXWWw==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
 
 yargs-parser@^5.0.0:
   version "5.0.0"

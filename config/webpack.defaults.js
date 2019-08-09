@@ -25,13 +25,26 @@ module.exports = {
   plugins: [],
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: [
+      '.js',
+      '.json',
+      '.ts',
+      '.tsx',
+    ],
     alias: {
       Types: path.resolve(__dirname, 'src/__generated__'),
     },
   },
   module: {
     rules: [
+      {
+        test: /\btranslations\.(json|ya?ml)$/,
+        type: 'javascript/auto',
+        loader: 'messageformat-loader',
+        options: {
+          locale: packageConfig.locale || 'en',
+        },
+      },
       {
         test: /\.tsx*$/,
         include: [path.resolve('src')],
