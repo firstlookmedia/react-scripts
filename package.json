@@ -60,6 +60,8 @@
     "jest-resolve": "23.0.0",
     "jsdom": "^11",
     "loader-utils": "^1",
+    "messageformat": "^2.3.0",
+    "messageformat-loader": "^0.8.1",
     "mime": "^2.0.3",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.9.0",
