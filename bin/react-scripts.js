@@ -11,6 +11,7 @@ const args = process.argv.slice(3);
 
 switch (script) {
   case 'build':
+  case 'build-queries':
   case 'start':
   case 'upload':
   case 'upload-queries':

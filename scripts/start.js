@@ -90,25 +90,6 @@ Development server started. Visit ${chalk.bold.green(url)}
 });
 
 const serverCompiler = webpack(Object.assign({}, serverConfig));
-const serverPath = path.resolve('build/server.js');
-
-let child;
-
-function startServer() {
-  child = spawn('node', [serverPath], { stdio: 'inherit' });
-  child.on('close', () => {
-    child = null;
-  });
-}
-
-function restartServer() {
-  if (child) {
-    child.on('close', () => startServer());
-    child.kill();
-  } else {
-    startServer();
-  }
-}
 
 serverCompiler.watch({ poll: 1000 }, (err, stats) => {
   if (err) {
@@ -116,9 +97,6 @@ serverCompiler.watch({ poll: 1000 }, (err, stats) => {
   }
   if (stats.hasErrors()) {
     console.log(stats.toString('errors-only'));
-  } else {
-    console.log('Starting new server...');
-    restartServer();
   }
 });
 
