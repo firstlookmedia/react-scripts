@@ -39,7 +39,7 @@ function printFileSizes(stats, config) {
 
 function handler(config, err, stats) {
   if (err) {
-    console.error(err.message || err);
+    console.error(err.stack || err.message || err);
     process.exit(1);
   }
   if (stats.hasErrors()) {
