@@ -64,7 +64,7 @@
     "messageformat-loader": "^0.8.1",
     "mime": "^2.0.3",
     "mini-css-extract-plugin": "^0.5.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^6",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-calc": "^5.3.1",
     "postcss-loader": "^2",
