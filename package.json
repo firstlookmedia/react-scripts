@@ -74,7 +74,7 @@
     "resolve-bin": "^0.4.0",
     "resolve-url-loader": "^2.3.0",
     "sass": "^1.49.10",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^7.2.0",
     "start-server-webpack-plugin": "^2.2.5",
     "style-loader": "^0.21",
     "ts-loader": "^5.2.1",
