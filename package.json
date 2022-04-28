@@ -12,8 +12,8 @@
     "yarn": "^1.6.0"
   },
   "dependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.5.0",
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
     "@babel/plugin-proposal-function-sent": "^7.0.0",
@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@babel/runtime-corejs3": "^7.5.5",
+    "@babel/runtime-corejs3": "^7.10.0",
     "@loadable/babel-plugin": "^5.8.0",
     "@loadable/webpack-plugin": "^5.7.1",
     "autoprefixer": "^8",
