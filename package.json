@@ -87,11 +87,11 @@
     "webpack-node-externals": "^1"
   },
   "peerDependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "react-relay": "^5.0.0",
-    "react-test-renderer": "^16.3.0",
-    "relay-compiler": "^5.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-relay": "^12.0.0",
+    "react-test-renderer": "^16.9.0",
+    "relay-compiler": "^12.0.0",
     "source-map-support": "^0.5"
   },
   "devDependencies": {
@@ -99,11 +99,11 @@
     "eslint": "^4",
     "eslint-config-airbnb-base": "^12",
     "eslint-plugin-import": "^2",
-    "graphql": "^14.2.0",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "react-relay": "^5.0.0",
-    "relay-compiler": "^5.0.0",
+    "graphql": "^15.5.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-relay": "^12.0.0",
+    "relay-compiler": "^12.0.0",
     "source-map-support": "^0.5",
     "typescript": "^3.2.2"
   }
