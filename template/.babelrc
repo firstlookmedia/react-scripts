@@ -1,5 +1,0 @@
-{
-  "plugins": [
-    ["relay", {"compat": true, "schema": "schema.graphql"}]
-  ]
-}

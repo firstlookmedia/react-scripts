@@ -1,4 +1,3 @@
-
 process.env.NODE_ENV = 'production';
 
 const webpack = require('webpack');
@@ -40,7 +39,7 @@ function printFileSizes(stats, config) {
 
 function handler(config, err, stats) {
   if (err) {
-    console.error(err.message || err);
+    console.error(err.stack || err.message || err);
     process.exit(1);
   }
   if (stats.hasErrors()) {
@@ -53,7 +52,7 @@ function handler(config, err, stats) {
 console.log('Compiling relay queries...');
 const relayCompiler = spawn(
   path.resolve('./node_modules/.bin/relay-compiler'),
-  relayCompilerArguments,
+  relayCompilerArguments.concat('--watchman', 'false'),
   { stdio: 'inherit' },
 );
 
@@ -70,7 +69,7 @@ relayCompiler.on('close', (code) => {
     console.log();
     console.log('Building server files...');
     webpack(serverConfig).run(handler.bind(null, serverConfig));
-    if (process.env.PERSIST_QUERIES) {
+    if (process.env.PERSIST_QUERIES === 'true') {
       buildPersistedQueries();
     }
   });

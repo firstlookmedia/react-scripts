@@ -7,6 +7,7 @@ const mime = require('mime');
 
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
 const queriesBucket = process.env.QUERIES_S3_BUCKET;
+const persist = process.env.PERSIST_QUERIES === 'true';
 const uploadParams = {
   Bucket: queriesBucket,
   Key: '',
@@ -17,19 +18,30 @@ const uploadParams = {
 };
 const baseDir = './build/queries';
 
+if (!persist) {
+  console.error('Persist queries turned off. Exiting.');
+  process.exit(0);
+}
+
 if (!queriesBucket) {
   console.error('QUERIES_S3_BUCKET is empty. Exiting.');
   process.exit(1);
 }
 
 fs.readdir(baseDir, (err, files) => {
+  if (!files || files.length < 1) return;
+
   files.forEach((file) => {
     const fileStream = fs.createReadStream(path.join(baseDir, file));
     fileStream.on('error', (err) => {
       console.log('File Error', err);
     });
     uploadParams.Body = fileStream;
-    uploadParams.Key = `queries/${file}`;
+    // FIXME: remove STATIC_QUERY_SUFFIX when the following is resolved:
+    // https://github.com/facebook/relay/pull/2641
+    const hash = file.substring(0, file.length - 10);
+    const queryFile = `${hash}${process.env.STATIC_QUERY_SUFFIX || ''}.query.txt`;
+    uploadParams.Key = `queries/${queryFile}`;
 
     // Sets Content-Type header and in Metadata
     const type = mime.getType(file);

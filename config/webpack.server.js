@@ -4,19 +4,50 @@ const nodeExternals = require('webpack-node-externals');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const merge = require('webpack-merge');
 const defaults = require('./webpack.defaults.js');
+const packageConfig = require('./packageConfig');
 
-module.exports = merge.smart({
-  module: {
-    rules: [{
-      test: /\.css$/,
-      use: [path.join(__dirname, '../lib/exportLocalsLoader.js')],
-    }, {
-      test: /\.scss$/,
-      use: [path.join(__dirname, '../lib/exportLocalsLoader.js')],
-    }],
-  },
-}, defaults, {
+const config = merge.smart(defaults, {
   target: 'node',
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        include: path.resolve('src'),
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              exportOnlyLocals: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        include: path.resolve('node_modules'),
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              exportOnlyLocals: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              exportOnlyLocals: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
   node: {
     console: false,
     global: false,
@@ -26,13 +57,15 @@ module.exports = merge.smart({
     __dirname: false,
     setImmediate: false,
   },
-  entry: path.resolve('server.js'),
+  entry: path.resolve(packageConfig.serverEntry || 'server.js'),
   output: {
     filename: 'server.js',
     path: path.resolve('build'),
   },
   // put all node_modules into externals (require() them as usual w/o webpack)
-  externals: [nodeExternals()],
+  externals: [nodeExternals({
+    whitelist: /\.css$/,
+  })],
   plugins: [
     new webpack.BannerPlugin({
       banner: 'require("source-map-support").install();',
@@ -43,3 +76,5 @@ module.exports = merge.smart({
   ],
   devtool: 'source-map',
 });
+
+module.exports = config;

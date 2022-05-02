@@ -46,7 +46,7 @@ class FetcherBase {
 
 export class ServerFetcher extends FetcherBase {
   constructor(url) {
-    const isStaticQueries = process.env.PERSIST_QUERIES;
+    const isStaticQueries = process.env.PERSIST_QUERIES === 'true';
     super(url, isStaticQueries);
 
     this.payloads = [];
@@ -67,7 +67,7 @@ export class ServerFetcher extends FetcherBase {
 
 export class ClientFetcher extends FetcherBase {
   constructor(url, payloads) {
-    const isStaticQueries = envConfig.PERSIST_QUERIES;
+    const isStaticQueries = envConfig.PERSIST_QUERIES === 'true';
     super(url, isStaticQueries);
 
     this.payloads = payloads;
