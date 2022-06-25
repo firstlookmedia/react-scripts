@@ -59,7 +59,7 @@
     "jest": "23.0.0",
     "jest-cli": "23.0.0",
     "jest-resolve": "23.0.0",
-    "jsdom": "^11",
+    "jsdom": "^16",
     "loader-utils": "^1",
     "messageformat": "^2.3.0",
     "messageformat-loader": "^0.8.1",
